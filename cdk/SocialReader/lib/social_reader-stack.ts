@@ -18,11 +18,12 @@ export class SocialReaderStack extends cdk.Stack {
     });
 
     // Create a load-balanced Fargate service and make it public
-    new ecs_patterns.ApplicationLoadBalancedFargateService(this, "MyFargateService", {
+    new ecs_patterns.ApplicationLoadBalancedFargateService(this, "SampleFargateService", {
       cluster: cluster, // Required
       cpu: 512, // Default is 256
-      desiredCount: 3, // Default is 1
+      desiredCount: 2, // Default is 1
       taskImageOptions: { image: ecs.ContainerImage.fromRegistry("amazon/amazon-ecs-sample") },
+      // taskImageOptions: { image: ecs.ContainerImage.fromRegistry("mautic/mautic") },
       memoryLimitMiB: 1024, // Default is 512
       publicLoadBalancer: true // Default is false
     });

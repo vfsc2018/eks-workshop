@@ -29,6 +29,8 @@ npm install @aws-cdk/aws-ec2 @aws-cdk/aws-ecs @aws-cdk/aws-ecs-patterns
 ```
 npm run build
 cdk deploy
+# cdk deploy --profile test
+# cdk deploy --profile production
 ```
 
 > IAM Statement Changes

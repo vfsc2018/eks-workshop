@@ -28,48 +28,43 @@ npm install @aws-cdk/aws-ec2 @aws-cdk/aws-ecs @aws-cdk/aws-ecs-patterns
 
 ```
 npm run build
-cdk deploy
-# cdk deploy --profile test
+cdk deploy --profile default
+# cdk deploy
 # cdk deploy --profile production
 ```
 
+
 > IAM Statement Changes
 
-┌───┬────────────────┬────────┬────────────────┬──────────────────┬───────────┐
-│   │ Resource       │ Effect │ Action         │ Principal        │ Condition │
-├───┼────────────────┼────────┼────────────────┼──────────────────┼───────────┤
-│ + │ ${MyFargateSer │ Allow  │ sts:AssumeRole │ Service:ecs-task │           │
-│   │ vice/TaskDef/E │        │                │ s.amazonaws.com  │           │
-│   │ xecutionRole.A │        │                │                  │           │
-│   │ rn}            │        │                │                  │           │
-├───┼────────────────┼────────┼────────────────┼──────────────────┼───────────┤
-│ + │ ${MyFargateSer │ Allow  │ sts:AssumeRole │ Service:ecs-task │           │
-│   │ vice/TaskDef/T │        │                │ s.amazonaws.com  │           │
-│   │ askRole.Arn}   │        │                │                  │           │
-├───┼────────────────┼────────┼────────────────┼──────────────────┼───────────┤
-│ + │ ${MyFargateSer │ Allow  │ logs:CreateLog │ AWS:${MyFargateS │           │
-│   │ vice/TaskDef/w │        │ Stream         │ ervice/TaskDef/E │           │
-│   │ eb/LogGroup.Ar │        │ logs:PutLogEve │ xecutionRole}    │           │
-│   │ n}             │        │ nts            │                  │           │
-└───┴────────────────┴────────┴────────────────┴──────────────────┴───────────┘
+```
+┌───┬────────────────────────────────────────┬────────┬────────────────────────────────────────┬────────────────────────────────────────┬───────────┐
+│   │ Resource                               │ Effect │ Action                                 │ Principal                              │ Condition │
+├───┼────────────────────────────────────────┼────────┼────────────────────────────────────────┼────────────────────────────────────────┼───────────┤
+│ + │ ${Twitter4uFargateService/TaskDef/Exec │ Allow  │ sts:AssumeRole                         │ Service:ecs-tasks.amazonaws.com        │           │
+│   │ utionRole.Arn}                         │        │                                        │                                        │           │
+├───┼────────────────────────────────────────┼────────┼────────────────────────────────────────┼────────────────────────────────────────┼───────────┤
+│ + │ ${Twitter4uFargateService/TaskDef/Task │ Allow  │ sts:AssumeRole                         │ Service:ecs-tasks.amazonaws.com        │           │
+│   │ Role.Arn}                              │        │                                        │                                        │           │
+├───┼────────────────────────────────────────┼────────┼────────────────────────────────────────┼────────────────────────────────────────┼───────────┤
+│ + │ ${Twitter4uFargateService/TaskDef/web/ │ Allow  │ logs:CreateLogStream                   │ AWS:${Twitter4uFargateService/TaskDef/ │           │
+│   │ LogGroup.Arn}                          │        │ logs:PutLogEvents                      │ ExecutionRole}                         │           │
+└───┴────────────────────────────────────────┴────────┴────────────────────────────────────────┴────────────────────────────────────────┴───────────┘
+```
+
 
 > Security Group Changes
 
-┌───┬──────────────────────────┬─────┬────────────┬───────────────────────────┐
-│   │ Group                    │ Dir │ Protocol   │ Peer                      │
-├───┼──────────────────────────┼─────┼────────────┼───────────────────────────┤
-│ + │ ${MyFargateService/LB/Se │ In  │ TCP 80     │ Everyone (IPv4)           │
-│   │ curityGroup.GroupId}     │     │            │                           │
-│ + │ ${MyFargateService/LB/Se │ Out │ TCP 80     │ ${MyFargateService/Servic │
-│   │ curityGroup.GroupId}     │     │            │ e/SecurityGroup.GroupId}  │
-├───┼──────────────────────────┼─────┼────────────┼───────────────────────────┤
-│ + │ ${MyFargateService/Servi │ In  │ TCP 80     │ ${MyFargateService/LB/Sec │
-│   │ ce/SecurityGroup.GroupId │     │            │ urityGroup.GroupId}       │
-│   │ }                        │     │            │                           │
-│ + │ ${MyFargateService/Servi │ Out │ Everything │ Everyone (IPv4)           │
-│   │ ce/SecurityGroup.GroupId │     │            │                           │
-│   │ }                        │     │            │                           │
-└───┴──────────────────────────┴─────┴────────────┴───────────────────────────┘
+```
+┌───┬──────────────────────────────────────────────────────────┬─────┬────────────┬──────────────────────────────────────────────────────────┐
+│   │ Group                                                    │ Dir │ Protocol   │ Peer                                                     │
+├───┼──────────────────────────────────────────────────────────┼─────┼────────────┼──────────────────────────────────────────────────────────┤
+│ + │ ${Twitter4uFargateService/LB/SecurityGroup.GroupId}      │ In  │ TCP 80     │ Everyone (IPv4)                                          │
+│ + │ ${Twitter4uFargateService/LB/SecurityGroup.GroupId}      │ Out │ TCP 80     │ ${Twitter4uFargateService/Service/SecurityGroup.GroupId} │
+├───┼──────────────────────────────────────────────────────────┼─────┼────────────┼──────────────────────────────────────────────────────────┤
+│ + │ ${Twitter4uFargateService/Service/SecurityGroup.GroupId} │ In  │ TCP 80     │ ${Twitter4uFargateService/LB/SecurityGroup.GroupId}      │
+│ + │ ${Twitter4uFargateService/Service/SecurityGroup.GroupId} │ Out │ Everything │ Everyone (IPv4)                                          │
+└───┴──────────────────────────────────────────────────────────┴─────┴────────────┴──────────────────────────────────────────────────────────┘
+```
 
 ## Clean Up
 
@@ -85,3 +80,19 @@ cdk destroy
  * `cdk deploy`      deploy this stack to your default AWS account/region
  * `cdk diff`        compare deployed stack with current state
  * `cdk synth`       emits the synthesized CloudFormation template
+
+## TODO
+
+```javascript
+echo "var twitter_config = module.exports = {
+twitter: {
+    consumer_key: '`aws secretsmanager get-secret-value --secret-id AuthConsumerManagerSecret --query SecretString --output text --region ap-southeast-2`',
+    consumer_secret: '`aws secretsmanager get-secret-value --secret-id AuthConsumerSecretManagerSecret --query SecretString --output text --region ap-southeast-2`',
+    access_token: '`aws secretsmanager get-secret-value --secret-id AuthAccessTokenManagerSecret --query SecretString --output text --region ap-southeast-2`',
+    access_token_secret: '`aws secretsmanager get-secret-value --secret-id AuthAccessTokenSecretManagerSecret --query SecretString --output text --region ap-southeast-2`'
+  },
+topics: ['VPC', 'EC2', 'RDS', 'S3', 'Covid'],
+languages: ['en', 'vi'],
+kinesis_delivery: 'AI-Driven-Social-Media-IngestionFirehoseStream'
+}" > twitter_reader_config.js
+```

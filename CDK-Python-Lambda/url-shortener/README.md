@@ -3,6 +3,15 @@
 
 Use the `Python CDK` to quickly assemble your AWS infrastructure and show you how easy to configure your cloud resources, manage permissions, connect event sources and even build and publish your own constructs.
 
+> Generate a shortened URL
+
+```
+curl https://shortener.aws.job4u.io?targetUrl=https://aws.amazon.com/cdk/
+
+## to access a shortened URL
+curl -I https://shortener.aws.job4u.io/XXXXXXXX
+```
+
 1. Creating a CDK Application
 2. Modeling DynamoDB
 3. Creating a Lambda function
@@ -12,6 +21,7 @@ Use the `Python CDK` to quickly assemble your AWS infrastructure and show you ho
 7. Cleanup
 
 ### 1. Creating a CDK Application
+
 
 > Install AWS CDK
 
@@ -23,11 +33,19 @@ cdk --version
 tree
 ```
 
+> Creating a CDK application
+
+```
+mkdir url-shortener
+cd url-shortener
+cdk init --language python
+```
+
 > Install packages
 
 ```bash
 ## Manually create a virtualenv on MacOS and Linux:
-# python3 -m venv .env
+python3 -m venv .env
 
 ## Activate your virtualenv.
 source .env/bin/activate
@@ -39,6 +57,9 @@ pip install -r requirements.txt
 ```
 
 ### 2. Modeling DynamoDB
+
+* [x] Table Name: `mapping-table`
+* [x] Partition Key: `id` (AttributeType.STRING)
 
 ### 3. Creating a Lambda function
 

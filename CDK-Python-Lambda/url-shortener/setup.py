@@ -19,10 +19,6 @@ setuptools.setup(
     packages=setuptools.find_packages(where="url_shortener"),
 
     install_requires=[
-        "aws-cdk.core==1.31.0",
-    ],
-
-    install_requires=[
         "aws-cdk.core",
         "aws-cdk.aws-dynamodb",
         "aws-cdk.aws-events",

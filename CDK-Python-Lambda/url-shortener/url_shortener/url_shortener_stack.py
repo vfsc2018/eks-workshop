@@ -1,4 +1,3 @@
-# from aws_cdk.core import App, Construct, Duration
 from aws_cdk import core
 from aws_cdk import aws_dynamodb, aws_lambda, aws_apigateway
 
@@ -19,15 +18,11 @@ class UrlShortenerStack(core.Stack):
                                    write_capacity=5)
 
         ## Define the API gateway request handler. all API requests will go to the same function.
-        # handler = aws_lambda.Function(self, "UrlShortenerFunction",
-        #                               code=aws_lambda.Code.asset("./lambda"),
-        #                               handler="handler.main",
-        #                               timeout=Duration.minutes(5),
-        #                               runtime=aws_lambda.Runtime.PYTHON_3_7)
         handler = aws_lambda.Function(self, "UrlShortenerFunction",
-                                      runtime=aws_lambda.Runtime.PYTHON_3_7,
+                                      code=aws_lambda.Code.asset("./lambda"),
                                       handler="handler.main",
-                                      code=aws_lambda.AssetCode(path="./lambda"))
+                                      timeout=core.Duration.minutes(5),
+                                      runtime=aws_lambda.Runtime.PYTHON_3_7)
 
         ## Pass the table name to the handler through an environment variable and 
         ## grant the handler read/write permissions on the table.

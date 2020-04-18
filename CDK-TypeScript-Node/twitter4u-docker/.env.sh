@@ -16,7 +16,7 @@ export DOCKER_REGISTRY_PASSWORD=XXXX
 
 export DOCKER_REPOSITORY=twitter4u
 
-export CONSUMER_KEY=<consumer_key>
-export CONSUMER_SECRET=<consumer_secret>
-export ACCESS_TOKEN=<access_token>
-export ACCESS_TOKEN_SECRET=<access_token_secret>
+export TWITTER_CONSUMER_KEY=<consumer_key>
+export TWITTER_CONSUMER_SECRET=<consumer_secret>
+export TWITTER_ACCESS_TOKEN=<access_token>
+export TWITTER_ACCESS_TOKEN_SECRET=<access_token_secret>

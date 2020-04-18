@@ -3,10 +3,10 @@
 ## Configuring: `.env.sh`
 
 * [ ] DOCKER_REGISTRY_PASSWORD
-* [ ] CONSUMER_KEY=        Twitter consumer_key
-* [ ] CONSUMER_SECRET=     Twitter consumer_secret
-* [ ] ACCESS_TOKEN=        Twitter access_token
-* [ ] ACCESS_TOKEN_SECRET= Twitter access_token_secret
+* [ ] TWITTER_ACCESS_TOKEN=        Twitter access_token
+* [ ] TWITTER_ACCESS_TOKEN_SECRET= Twitter access_token_secret
+* [ ] TWITTER_CONSUMER_KEY=        Twitter consumer_key
+* [ ] TWITTER_CONSUMER_SECRET=     Twitter consumer_secret
 
 * [ ] TWITTER_TOPICS=AWS,EC2,S3,Workspaces,Covid
 * [ ] TWITTER_LANGUAGES=en,vi
@@ -19,19 +19,19 @@
 
 ```bash
 $ docker run \
-    -e CONSUMER_KEY=xxxxx \
-    -e CONSUMER_SECRET=xxxxx \
-    -e ACCESS_TOKEN=xxxxx \
-    -e ACCESS_TOKEN_SECRET=xxxxx \
+    -e TWITTER_ACCESS_TOKEN=xxxxx \
+    -e TWITTER_ACCESS_TOKEN_SECRET=xxxxx \
+    -e TWITTER_CONSUMER_KEY=xxxxx \
+    -e TWITTER_CONSUMER_SECRET=xxxxx \
     nnthanh101/twitter4u
 ```
 
 ### about Twitter Authentication
 
-- `-e CONSUMER_KEY=...`
-- `-e CONSUMER_SECRET=...`
-- `-e ACCESS_TOKEN=...`
-- `-e ACCESS_TOKEN_SECRET=...`
+- `-e TWITTER_CONSUMER_KEY=...`
+- `-e TWITTER_CONSUMER_SECRET=...`
+- `-e TWITTER_ACCESS_TOKEN=...`
+- `-e TWITTER_ACCESS_TOKEN_SECRET=...`
 
 ### Other options
 

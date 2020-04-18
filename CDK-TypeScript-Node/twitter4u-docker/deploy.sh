@@ -21,10 +21,10 @@ echo "#########################################################"
 echo
 
 docker run -it --rm \
-       -e CONSUMER_KEY=${CONSUMER_KEY} \
-       -e CONSUMER_SECRET=${CONSUMER_SECRET} \
-       -e ACCESS_TOKEN=${ACCESS_TOKEN} \
-       -e ACCESS_TOKEN_SECRET=${ACCESS_TOKEN_SECRET} \
+       -e TWITTER_CONSUMER_KEY=${TWITTER_CONSUMER_KEY} \
+       -e TWITTER_CONSUMER_SECRET=${TWITTER_CONSUMER_SECRET} \
+       -e TWITTER_ACCESS_TOKEN=${TWITTER_ACCESS_TOKEN} \
+       -e TWITTER_ACCESS_TOKEN_SECRET=${TWITTER_ACCESS_TOKEN_SECRET} \
        -e TWITTER_TOPICS=AWS,EC2,S3,Workspaces,Covid \
        -e TWITTER_LANGUAGES=en,vi \
        -e TWITTER_FILTER_LEVEL=none \

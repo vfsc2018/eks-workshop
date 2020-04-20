@@ -11,5 +11,5 @@ slug: showcase
 #### 🌤 [ECS Fargate](https://ecs-fargate.aws.job4u.io)
 ![ECS Fargate](/images/showcase/ecs-fargate.png?width=50pc)
 
-#### ⚡ [DevSecOps on AWS by Examples](https://devopssec.aws.job4u.io)
-![DevSecOps on AWS by Examples](/images/showcase/serverless.png?width=50pc)
+#### ⚡ [Modern Application Development](https://devopssec.aws.job4u.io)
+![Modern Application Development](/images/showcase/serverless.png?width=50pc)

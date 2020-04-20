@@ -1,9 +1,9 @@
 ---
-title: "DevSecOps on AWS by Examples"
+title: "Modern Application"
 chapter: true
 weight: 1
 ---
 
-## DevSecOps on AWS by Examples
+# Modern Applications
 
 [Purpose & Business Values] This project is designed to ... 

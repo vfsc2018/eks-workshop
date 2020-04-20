@@ -3,7 +3,7 @@ languageCode = "en-US"
 defaultContentLanguage = "en"
 googleAnalytics = "UA-158079754-2"
 
-title = "DevSecOps on AWS by Examples"
+title = "Modern Application Development"
 theme = "hugo-theme-learn"
 themesdir = "themes"
 metaDataFormat = "yaml"
@@ -11,8 +11,8 @@ defaultContentLanguageInSubdir= true
 
 [params]
   themeVariant = "workshop"
-  editURL = "https://github.com/nnthanh101/devsecops/edit/master/content/"
-  description = "DevSecOps on AWS by Examples"
+  editURL = "https://github.com/nnthanh101/aws-cdk/edit/master/content/"
+  description = "Modern Application Development"
   author = "nnthanh101@gmail.com"
   showVisitedLinks = true
   disableBreadcrumb = false
@@ -23,14 +23,14 @@ home = [ "HTML", "RSS", "JSON"]
 
 [Languages]
 [Languages.en]
-title = "DevSecOps on AWS by Examples"
+title = "Modern Application Development"
 weight = 1
 languageName = "English"
 
 [[Languages.en.menu.shortcuts]]
 name = "<i class='fab fa-fw fa-github'></i> GitHub"
 identifier = "ds"
-url = "https://github.com/nnthanh101/devsecops"
+url = "https://github.com/nnthanh101/aws-cdk"
 weight = 10
 
 [[Languages.en.menu.shortcuts]]
@@ -46,14 +46,14 @@ weight = 20
 
 
 [Languages.vi]
-title = "DevSecOps on AWS by Examples"
+title = "Modern Application Development"
 weight = 2
 languageName = "Tiếng Việt"
 
 [[Languages.vi.menu.shortcuts]]
 name = "<i class='fab fa-fw fa-github'></i> GitHub"
 identifier = "ds"
-url = "https://github.com/nnthanh101/devsecops"
+url = "https://github.com/nnthanh101/aws-cdk"
 weight = 10
 
 [[Languages.vi.menu.shortcuts]]

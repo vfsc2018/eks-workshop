@@ -1,4 +1,4 @@
-# DevSecOps on AWS by Examples
+# Modern Application Development
 
 ### 1. Prerequisites
 
@@ -10,9 +10,9 @@ brew install hugo
 ### 2. Git clone
 
 ```
-git clone https://github.com/nnthanh101/devsecops.git
+git clone https://github.com/nnthanh101/aws-cdk.git
 
-cd devsecops
+cd modern-apps
 npm run theme
 ```
 
@@ -23,3 +23,11 @@ npm start
 ```
 
 > http://localhost:8080
+
+### Submodule
+
+```
+git submodule add https://github.com/nnthanh101/hugo-theme-learn themes/hugo-theme-learn
+
+# rm -rf .git/modules/themes/hugo-theme-learn .git/modules/hugo-theme-learn
+```

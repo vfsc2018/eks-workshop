@@ -4,12 +4,12 @@ frontend:
     # IMPORTANT - Please verify your build commands
     build:
       commands:
-        - cd modern-apps
+        - cd amplify
         - npm run theme
         - hugo
   artifacts:
     # IMPORTANT - Please verify your build output directory
-    baseDirectory: modern-apps/public
+    baseDirectory: amplify/public
     files:
       - '**/*'
   cache:

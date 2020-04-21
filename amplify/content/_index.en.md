@@ -4,6 +4,6 @@ chapter: true
 weight: 1
 ---
 
-# Modern Applications
+# Modern Application Development
 
 [Purpose & Business Values] This project is designed to ... 

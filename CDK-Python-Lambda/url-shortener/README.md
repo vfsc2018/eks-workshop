@@ -3,6 +3,27 @@
 
 Use the `Python CDK` to quickly assemble your AWS infrastructure and show you how easy to configure your cloud resources, manage permissions, connect event sources and even build and publish your own constructs.
 
+
+* [x] Create and source a Python virtualenv on MacOS and Linux, and install python dependencies:
+
+```
+python3 -m venv .env
+source .env/bin/activate
+pip install -r requirements.txt
+```
+
+* [ ] Install the latest version of the AWS CDK CLI:
+
+```
+# npm i -g aws-cdk --force
+```
+
+```
+cdk bootstrap aws://701571471198/ap-southeast-2
+cdk deploy '*'
+```
+
+
 > Generate a shortened URL
 
 ```

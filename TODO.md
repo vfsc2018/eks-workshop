@@ -2,6 +2,12 @@
 
 A list of public repositories, content, and web from re:Invent 2019 Workshops. Many of the links are subject to be moved or completely removed at any point in time in the future.
 
+* [ ] https://github.com/aws-samples/aws-serverless-ecommerce-platform
+* [ ] https://aws.amazon.com/getting-started/hands-on/break-monolith-app-microservices-ecs-docker-ec2/
+* [ ] https://github.com/aws-samples/aws-online-data-migration-workshop
+* [ ] https://aws-dataengineering-day.workshop.aws/en
+
+
 | 	Session ID	 | 	Session Name	 | 	Repo/Site	 | 
 | -------------- | --------------- | ------- |
 |   SVS203	 | Build a serverless ride-sharing web application | https://webapp.serverlessworkshops.io/ |

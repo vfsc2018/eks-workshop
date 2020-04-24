@@ -18,8 +18,18 @@ pip install -r requirements.txt
 # npm i -g aws-cdk --force
 ```
 
+```shell
+export AWS_ACCOUNT='701571471198'
+export AWS_REGION='ap-southeast-1'
+export AWS_VPC_ID='vpc-04f6bf98089c883b4'
+export AWS_ZONE_NAME='aws.job4u.io'
+export AWS_ZONE_ID='Z18LLN6ULFZKNH'
+export AWS_ZONE_CERT='arn:aws:acm:ap-southeast-1:701571471198:certificate/12049ee9-d585-44b4-bd06-00190aa5cca7'
 ```
-cdk bootstrap aws://701571471198/ap-southeast-2
+
+
+```
+cdk bootstrap aws://701571471198/ap-southeast-1
 cdk deploy '*'
 ```
 

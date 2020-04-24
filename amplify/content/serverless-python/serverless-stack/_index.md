@@ -16,4 +16,9 @@ pre= "<b>3.2. </b>"
 pip install aws-cdk.aws_dynamodb
 pip install aws-cdk.aws-lambda
 pip install aws-cdk.aws_apigateway
+
+pip install aws-cdk.aws_route53
+pip install aws-cdk.aws_route53_targets
+pip install aws-cdk.aws_certificatemanager
+pip install aws-cdk.aws_ec2
 ```

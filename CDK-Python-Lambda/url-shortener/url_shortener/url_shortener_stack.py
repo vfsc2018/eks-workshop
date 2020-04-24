@@ -1,8 +1,11 @@
 from aws_cdk import core
 from aws_cdk import aws_dynamodb, aws_lambda, aws_apigateway
 
+from base_common import BaseStack
 
-class UrlShortenerStack(core.Stack):
+# Our main Application Stack
+class UrlShortenerStack(BaseStack):
+# class UrlShortenerStack(core.Stack):
 
     def __init__(self, scope: core.Construct, id: str, **kwargs) -> None:
         super().__init__(scope, id, **kwargs)

@@ -1,6 +1,7 @@
 +++
 title = "DynamoDB"
 weight = 100
+pre= "<b>3.2.1. </b>"
 +++
 
 ### Step 1. Add an DynamoDB to your stack

@@ -1,7 +1,9 @@
-from aws_cdk import core
+from aws_cdk.core import App, Construct, Duration
 from aws_cdk import aws_dynamodb, aws_lambda, aws_apigateway
 
 from base_common import BaseStack
+
+from traffic101 import Traffic101
 
 # Our main Application Stack
 class UrlShortenerStack(BaseStack):
@@ -41,3 +43,16 @@ class UrlShortenerStack(BaseStack):
         ## The shared Domain Name that can be accessed through the API in BaseStack
         ## NOTE: you can comment out if you want to bypass the Domain Name mapping
         self.map_base_subdomain('shortener', api)
+
+
+## Separate Stack that includes the Traffic Generator
+class TrafficGeneratorStack(BaseStack):
+    def __init__(self, scope: Construct, id: str):
+        super().__init__(scope, id)
+
+        ## Define a Traffic Generator instance that hits the URL at 5 TPS
+        ## and hosted within the shared Base-VPC
+        Traffic101(self, 'generator',
+               url='https://shortener.aws.job4u.io/f84b55e1',
+               tps=5,
+               vpc=self.base_vpc)

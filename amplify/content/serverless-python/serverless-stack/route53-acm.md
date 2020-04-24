@@ -1,6 +1,7 @@
 +++
 title = "Route53 & ACM"
 weight = 400
+pre= "<b>3.2.4. </b>"
 +++
 
 
@@ -84,8 +85,7 @@ Let's try this endpoint with `curl`. Copy the URL and execute (your
 prefix and region will likely be different).
 
 {{% notice info %}}
-If you don't have [curl](https://curl.haxx.se/) installed, you can use
-your favorite Web Browser to hit this URL.
+If you don't have [curl](https://curl.haxx.se/) installed, you can use your favorite Web Browser to hit this URL.
 {{% /notice %}}
 
 ```

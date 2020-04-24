@@ -1,6 +1,7 @@
 +++
 title = "Lambda"
 weight = 200
+pre= "<b>3.2.2. </b>"
 +++
 
 ## Step 1. Lambda Handler code

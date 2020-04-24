@@ -6,6 +6,7 @@ A list of public repositories, content, and web from re:Invent 2019 Workshops. M
 * [ ] https://aws.amazon.com/getting-started/hands-on/break-monolith-app-microservices-ecs-docker-ec2/
 * [ ] https://github.com/aws-samples/aws-online-data-migration-workshop
 * [ ] https://aws-dataengineering-day.workshop.aws/en
+* [ ] https://github.com/aws-samples/aws-modern-application-workshop
 
 
 | 	Session ID	 | 	Session Name	 | 	Repo/Site	 | 

@@ -1,7 +1,7 @@
 +++
 title = "Clean up"
-weight = 60
-chapter = true
+weight = 50
+pre= "<b>3.5. </b>"
 +++
 
 # Clean up your stack

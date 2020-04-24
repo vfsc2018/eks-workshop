@@ -2,8 +2,8 @@ from aws_cdk.core import Construct
 from aws_cdk import aws_ecs, aws_ec2
 
 
-# a User-Defined Construct
-# just a Class the inherits from the core.Construct Base Class
+## a User-Defined Construct
+## just a Class the inherits from the core.Construct Base Class
 class Traffic101(Construct):
     """
     An HTTP traffic generator.
@@ -23,18 +23,18 @@ class Traffic101(Construct):
         """
         super().__init__(scope, id)
 
-        # define an ECS cluster hosted within the requested VPC
+        ## Define an ECS Cluster hosted within the requested VPC
         cluster = aws_ecs.Cluster(self, 'cluster', vpc=vpc)
 
-        # define our task definition with a single container
-        # the image is built & published from a local asset directory
+        ## Define our ECS Task Definition with a single Container.
+        ## The image is built & published from a local asset directory
         task_definition = aws_ecs.FargateTaskDefinition(self, 'PingTask')
         task_definition.add_container('Pinger',
                                       image=aws_ecs.ContainerImage.from_asset("pinger"),
                                       environment={'URL': url})
 
-        # define our fargate service. TPS determines how many instances we
-        # want from our task (each task produces a single TPS)
+        ## Define our Fargate Service. TPS determines how many Instances we
+        ## want from our Task (each Task produces a single TPS)
         aws_ecs.FargateService(self, 'service',
                                cluster=cluster,
                                task_definition=task_definition,

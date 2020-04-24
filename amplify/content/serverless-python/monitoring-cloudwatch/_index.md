@@ -1,3 +1,14 @@
++++
+title = "Monitoring using CloudWatch"
+weight = 40
+pre= "<b>3.4. </b>"
++++
+
+![Serverless Stack Architecture](/images/serverless-stack.png)
+
+### 3.4.1. 🎯 Monitoring using 3rd-Party Library [cdk-watchful](https://pypi.org/project/cdk-watchful/) 
+
+{{<highlight python "hl_lines= 8 52-53">}}
 from aws_cdk import core
 from aws_cdk.core import App, Construct, Duration
 from aws_cdk import aws_dynamodb, aws_lambda, aws_apigateway
@@ -63,3 +74,15 @@ class TrafficGeneratorStack(BaseStack):
               url='https://shortener.aws.job4u.io/f84b55e1',
               tps=10,
               vpc=self.base_vpc)
+{{</highlight>}}
+
+### 3.4.2. CDK Diff then Deploy
+
+```
+cdk diff '*'
+cdk deploy '*'
+```
+
+> 🚀 [url-shortener.watchfulWatchfulDashboardF732C7A5](https://console.aws.amazon.com/cloudwatch/home?region=ap-southeast-1#dashboards:name=watchfulDashboard6A2D7A94-bVC8c7qrTBw0)
+
+# 👍⛅🚀

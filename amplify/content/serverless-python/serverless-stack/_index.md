@@ -22,4 +22,6 @@ pip install aws-cdk.aws_route53_targets
 pip install aws-cdk.aws_certificatemanager
 pip install aws-cdk.aws_ec2
 pip install aws-cdk.aws_ecs
+
+pip install cdk-watchful
 ```

@@ -32,3 +32,7 @@ docker build -t pinger .
 
 docker run -it -e URL=https://shortener.aws.job4u.io/f84b55e1 pinger
 ```
+
+```
+cdk deploy url-shortener-load-test
+```

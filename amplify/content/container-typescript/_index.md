@@ -1,10 +1,11 @@
 +++
-title = "Container TypeScript"
+title = "Container & TypeScript-CDK"
 chapter = true
-weight = 40
-pre= "<b>4. </b>"
+weight = 20
+pre= "<b>2. </b>"
 +++
 
-# The TypeScript Workshop
+# Container Micro-Services using TypeScript CDK
 
-This version of the workshop will guide you through a getting started experience in TypeScript.
+
+{{% children showhidden="false" %}}

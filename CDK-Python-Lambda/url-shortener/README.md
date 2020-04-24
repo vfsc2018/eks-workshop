@@ -77,6 +77,19 @@ source .env/bin/activate
 pip install -r requirements.txt
 ```
 
+> Synthesize a template from your app
+
+```
+cdk synth
+```
+
+> Bootstrapping an environment
+
+```
+cdk bootstrap
+cdk deploy url-shortener
+```
+
 ### 2. Modeling DynamoDB
 
 * [x] Table Name: `mapping-table`

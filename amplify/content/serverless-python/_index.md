@@ -1,10 +1,10 @@
 +++
-title = "Serverless Python"
+title = "Serverless & Python-CDK"
 chapter = true
-weight = 50
-pre= "<b>5. </b>"
+weight = 30
+pre= "<b>3. </b>"
 +++
 
-# The Python Workshop
+# Serverless Application using Python CDK
 
-This version of the workshop will guide you through a getting started experience in Python.
+{{% children showhidden="false" %}}

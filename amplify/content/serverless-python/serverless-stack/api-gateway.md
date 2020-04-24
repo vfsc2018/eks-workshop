@@ -1,3 +1,12 @@
++++
+title = "API Gateway"
+weight = 300
++++
+
+
+### Step 1. Add an API Gateway to your stack
+
+{{<highlight python "hl_lines= 22-26 30-31 34-35">}}
 from aws_cdk import core
 from aws_cdk import aws_dynamodb, aws_lambda, aws_apigateway
 
@@ -33,3 +42,60 @@ class UrlShortenerStack(core.Stack):
         ## Define the API endpoint and associate the handler
         api = aws_apigateway.LambdaRestApi(self, "UrlShortenerApi",
                                            handler=handler)
+{{</highlight>}}
+
+
+## Step 2. CDK Diff
+
+Save your code, and let's take a quick look at the `cdk diff` before we deploy:
+
+```
+cdk diff url-shortener
+```
+
+
+## Step 3. Let's deploy
+
+```
+cdk deploy url-shortener
+```
+
+## Step 4: Stack outputs
+
+When deployment is complete, you'll notice this line:
+
+```
+url-shortener.UrlShortenerApiEndpoint23405F0E = https://iswpmei782.execute-api.ap-southeast-1.amazonaws.com/prod/
+```
+
+This is a [stack output](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/stacks.html) that's automatically added by the API Gateway construct and includes the URL of the API Gateway endpoint.
+
+## Testing your Serverless App
+
+Let's try this endpoint with `curl`. Copy the URL and execute (your
+prefix and region will likely be different).
+
+{{% notice info %}}
+If you don't have [curl](https://curl.haxx.se/) installed, you can use
+your favorite Web Browser to hit this URL.
+{{% /notice %}}
+
+```
+curl https://iswpmei782.execute-api.ap-southeast-1.amazonaws.com/prod/
+
+curl https://iswpmei782.execute-api.ap-southeast-1.amazonaws.com/prod/?targetUrl=https://aws.amazon.com/cdk
+```
+
+Output should look like this: 
+
+Created URL: https://iswpmei782.execute-api.ap-southeast-1.amazonaws.com/prod/**8f1d8e01**
+
+> To access a shortened URL
+
+```
+curl -I https://iswpmei782.execute-api.ap-southeast-1.amazonaws.com/prod/8f1d8e01
+```
+
+---
+
+Good Job! 👍

@@ -1,17 +1,20 @@
 +++
-title = "API Gateway"
-weight = 300
+title = "Route53 & ACM"
+weight = 400
 +++
 
 
-### Step 1. Add an API Gateway to your stack
+### Step 1. Add an Route53 & ACM to your stack
 
-{{<highlight python "hl_lines=2 34-35">}}
+{{<highlight python "hl_lines= 4 7 43">}}
 from aws_cdk import core
 from aws_cdk import aws_dynamodb, aws_lambda, aws_apigateway
 
+from base_common import BaseStack
 
-class UrlShortenerStack(core.Stack):
+# Our main Application Stack
+class UrlShortenerStack(BaseStack):
+# class UrlShortenerStack(core.Stack):
 
     def __init__(self, scope: core.Construct, id: str, **kwargs) -> None:
         super().__init__(scope, id, **kwargs)
@@ -42,6 +45,11 @@ class UrlShortenerStack(core.Stack):
         ## Define the API endpoint and associate the handler
         api = aws_apigateway.LambdaRestApi(self, "UrlShortenerApi",
                                            handler=handler)
+
+        ## Map shortener.aws.job4u.io to this API Gateway endpoint
+        ## The shared Domain Name that can be accessed through the API in BaseStack
+        ## NOTE: you can comment out if you want to bypass the Domain Name mapping
+        self.map_base_subdomain('shortener', api)
 {{</highlight>}}
 
 
@@ -81,19 +89,19 @@ your favorite Web Browser to hit this URL.
 {{% /notice %}}
 
 ```
-curl https://iswpmei782.execute-api.ap-southeast-1.amazonaws.com/prod/
+curl https://shortener.aws.job4u.io
 
-curl https://iswpmei782.execute-api.ap-southeast-1.amazonaws.com/prod/?targetUrl=https://aws.amazon.com/cdk
+curl https://shortener.aws.job4u.io?targetUrl=https://aws.amazon.com/cdk
 ```
 
 Output should look like this: 
 
-Created URL: https://iswpmei782.execute-api.ap-southeast-1.amazonaws.com/prod/**8f1d8e01**
+Created URL: Created URL: https://shortener.aws.job4u.io/**c936375a**
 
 > To access a shortened URL
 
 ```
-curl -I https://iswpmei782.execute-api.ap-southeast-1.amazonaws.com/prod/8f1d8e01
+curl -I https://shortener.aws.job4u.io/c936375a
 ```
 
 ---

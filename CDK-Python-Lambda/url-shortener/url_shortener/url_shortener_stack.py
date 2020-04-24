@@ -36,3 +36,8 @@ class UrlShortenerStack(BaseStack):
         ## Define the API endpoint and associate the handler
         api = aws_apigateway.LambdaRestApi(self, "UrlShortenerApi",
                                            handler=handler)
+
+        ## Map shortener.aws.job4u.io to this API Gateway endpoint
+        ## The shared Domain Name that can be accessed through the API in BaseStack
+        ## NOTE: you can comment out if you want to bypass the Domain Name mapping
+        self.map_base_subdomain('shortener', api)

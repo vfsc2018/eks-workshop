@@ -4,7 +4,7 @@ weight = 40
 pre= "<b>3.4. </b>"
 +++
 
-![Serverless Stack Architecture](/images/serverless-stack.png)
+![Serverless Stack - CloudWatch Dashboard](/images/serverless-python/serverless-stack-dashboard.png)
 
 ### 3.4.1. 🎯 Monitoring using 3rd-Party Library [cdk-watchful](https://pypi.org/project/cdk-watchful/) 
 

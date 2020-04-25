@@ -8,7 +8,7 @@ pre= "<b>3.2. </b>"
 
 > 🎯 We'll add a **Lambda Function** with an **API-Gateway Endpoint** in front of it.
 
-![Serverless Stack Architecture](/images/serverless-stack.png)
+![Serverless Stack Architecture](/images/serverless-python/serverless-stack.png)
 
 > 🎯 Install the **AWS API-Gateway, Lambda, DynamoDB** Construct Library
 

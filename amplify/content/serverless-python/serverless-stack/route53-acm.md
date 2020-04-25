@@ -4,6 +4,7 @@ weight = 400
 pre= "<b>3.2.4. </b>"
 +++
 
+![Route53 & ACM](/images/serverless-python/route53-acm.png)
 
 ### Step 1. Add an Route53 & ACM to your stack
 

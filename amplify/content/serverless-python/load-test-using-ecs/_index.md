@@ -7,8 +7,7 @@ pre= "<b>3.3. </b>"
 
 > 🎯 We'll generate some traffic for Load Test on AWS ECS
 
-
-![Serverless Stack Architecture](/images/serverless-stack.png)
+![Serverless Stack - ECS Container & CloudWatch](/images/serverless-python/serverless-app-ecs-cloudwatch.png)
 
 ### 3.3.1. Pinger at `pinger/ping.sh`
 

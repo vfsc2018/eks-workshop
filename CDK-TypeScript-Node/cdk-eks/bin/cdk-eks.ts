@@ -7,4 +7,13 @@ import { CdkEksStack } from '../lib/cdk-eks-stack';
 const app = new cdk.App();
 new CdkEksStack(app, 'CdkEksStack');
 
+// TODO .env
+// new CdkEksStack(app, 'CdkEksStack', {
+//     env: {
+//         region: process.env.AWS_REGION,
+//         account: process.env.AWS_ACCOUNT_ID
+//     }
+// });
+
+// TODO EKS-EC2
 // new CdkEksEC2Stack(app, 'CDK-EKS-EC2-Stack');

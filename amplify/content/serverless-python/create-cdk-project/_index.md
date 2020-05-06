@@ -1,10 +1,9 @@
 +++
-title = "New CDK Project"
+title = "New Python CDK Project"
 weight = 10
 pre= "<b>3.1. </b>"
 +++
 
-# Creating the Python CDK project
 
 * 🎯 We will use `cdk init` to create a new AWS CDK Python project.
 

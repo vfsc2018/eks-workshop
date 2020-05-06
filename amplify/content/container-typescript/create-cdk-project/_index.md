@@ -24,6 +24,8 @@ cdk init --language typescript
 This will start the TypeScript compiler `tsc` in “watch” mode, which will monitor your project directory and will automatically compile any changes to your `.ts` files to `.js`.
 
 ```bash
+# npm run build
+
 npm run watch
 ```
 

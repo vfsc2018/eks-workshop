@@ -1,3 +1,15 @@
++++
+title = "EKS Fargate"
+weight = 200
+pre= "<b>2.2.2. </b>"
++++
+
+### Step 1. Add a EKS-Fargate to your stack
+
+* 🎯 EKS-Fargate ...
+
+
+{{<highlight typescript "hl_lines=4-5 20-47">}}
 import * as cdk from '@aws-cdk/core';
 
 import * as ec2 from '@aws-cdk/aws-ec2';
@@ -16,7 +28,7 @@ export class CdkEksStack extends cdk.Stack {
       cidr: '10.10.0.0/16',
       natGateways: 1
     })
-
+    
     // Step 2. EKS Cluster with Fargate
 
     // IAM Role for our Fargate worker nodes
@@ -48,3 +60,22 @@ export class CdkEksStack extends cdk.Stack {
     
   }
 }
+{{</highlight>}}
+
+
+## Step 2. CDK Diff
+
+Save your code, and let's take a quick look at the `cdk diff` before we deploy:
+
+```
+npm run build
+
+cdk diff CdkEksStack
+```
+
+
+## Step 3. Let's deploy
+
+```
+cdk deploy CdkEksStack
+```

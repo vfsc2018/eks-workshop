@@ -2,12 +2,19 @@
 
 A list of public repositories, content, and web from re:Invent 2019 Workshops. Many of the links are subject to be moved or completely removed at any point in time in the future.
 
+* [x] https://github.com/aws-samples/amazon-eks-cdk-blue-green-cicd
+* [x] https://github.com/aws-samples/amazon-eks-cicd-codebuild
+
 * [ ] https://github.com/aws-samples/aws-serverless-ecommerce-platform
 * [ ] https://aws.amazon.com/getting-started/hands-on/break-monolith-app-microservices-ecs-docker-ec2/
 * [ ] https://github.com/aws-samples/aws-online-data-migration-workshop
 * [ ] https://aws-dataengineering-day.workshop.aws/en
 * [ ] https://github.com/aws-samples/aws-modern-application-workshop
 * [ ] https://github.com/awslabs/realworld-serverless-application
+* [ ] https://dev.to/ryands17/deploying-a-spa-using-aws-cdk-typescript-4ibf
+* [ ] https://github.com/eladb/cdk-watchful
+* [ ] https://github.com/cloudcomponents/cdk-components/tree/master/packages/cdk-codepipeline-slack
+* [ ] https://sbstjn.com/deploy-react-cra-with-cdk-codepipeline-and-codebuild.html
 
 
 | 	Session ID	 | 	Session Name	 | 	Repo/Site	 | 
@@ -23,3 +30,12 @@ A list of public repositories, content, and web from re:Invent 2019 Workshops. M
 |   ARC314 |  Decoupled microservices: Building scalable applications | https://mainline.d1x1ku9g0a2648.amplifyapp.com/ | 
 
 * [x] [Mautic Marketing Automation using ECS Fargate](http://mautic.aws.job4u.io/) 
+
+
+* [ ] https://github.com/TysonWorks/cdk-examples/blob/master/serverless-eks/index.ts
+* [ ] https://medium.com/tysonworks/serverless-kubernetes-with-amazon-eks-a2d8fb0f8333
+* [ ] https://github.com/TysonWorks/cdk-examples/blob/master/eks-cluster/index.ts
+* [ ] http://arun-gupta.github.io/hpa-app-metrics/
+* [ ] https://github.com/TysonWorks/cdk-examples/blob/master/elasticsearch-cluster/index.ts
+* [ ] https://github.com/aws-samples/amazon-eks-fluent-logging-examples
+* [ ] 

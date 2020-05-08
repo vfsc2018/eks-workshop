@@ -87,3 +87,29 @@ sed "s/{{cluster_name}}/${CLUSTER_NAME}/;s/{{region_name}}/${AWS_REGION}/" | kub
 curl https://raw.githubusercontent.com/aws-samples/amazon-cloudwatch-container-insights/master/k8s-yaml-templates/quickstart/cwagent-fluentd-quickstart.yaml | sed "s/{{cluster_name}}/${CLUSTER_NAME}/;s/{{region_name}}/${AWS_REGION}/" | kubectl apply -f -
 
 https://us-east-2.console.aws.amazon.com/cloudwatch/home?region=us-east-2#cw:dashboard=Container;context=~(clusters~'eksworkshop-eksctl~dimensions~(~)~performanceType~'Service
+
+    // IAM role for our EC2 worker nodes
+    const workerRole = new iam.Role(this, 'EKSWorkerRole', {
+      assumedBy: new iam.ServicePrincipal('ec2.amazonaws.com')
+    });
+
+    const eksCluster = new eks.Cluster(this, 'Cluster', {
+      vpc: vpc,
+      kubectlEnabled: true,  // we want to be able to manage k8s resources using CDK
+      defaultCapacity: 0  // we want to manage capacity our selves
+    });
+
+    const onDemandASG = new autoscaling.AutoScalingGroup(this, 'OnDemandASG', {
+      vpc: vpc,
+      role: workerRole,
+      minCapacity: 1,
+      maxCapacity: 10,
+      instanceType: new ec2.InstanceType('t3.medium'),
+      machineImage: new eks.EksOptimizedImage({
+        kubernetesVersion: '1.14',
+        nodeType: eks.NodeType.STANDARD  // without this, incorrect SSM parameter for AMI is resolved
+      }),
+      updateType: autoscaling.UpdateType.ROLLING_UPDATE
+    });
+
+    eksCluster.addAutoScalingGroup(onDemandASG, {});

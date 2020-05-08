@@ -32,3 +32,9 @@ cdk diff CdkEksStack
 ```
 cdk deploy CdkEksStack
 ```
+
+🎯 Once the CDK is deployed successfully, go to the [CloudFormation](https://ap-southeast-1.console.aws.amazon.com/cloudformation/home?region=ap-southeast-1#/), select the `CdkEksStack` stack and go to the outputs section to copy the value from the field **~~Cluster~~ConfigCommand**; e.g. `EKSEC2ConfigCommand`.
+
+```bash
+aws eks update-kubeconfig --name EKS-EC2 --region ap-southeast-1 --role-arn arn:aws:iam::XXX
+```

@@ -76,7 +76,7 @@ export class CdkEksStack extends cdk.Stack {
       repositoryName: "eks-ecr-repo"
     });
 
-    // TODO
+    // TODO AWS Code*
     // const repository = new codecommit.Repository(this, 'EKS-CodeCommitRepo', {
     //   repositoryName: `${this.stackName}-repo`
     // });

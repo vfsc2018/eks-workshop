@@ -16,6 +16,7 @@ cd container-typescript/cdk-eks
 npm install
 npm run build
 
+cdk synth
 cdk bootstrap aws://$ACCOUNT_ID/$AWS_REGION
 cdk deploy
 ```

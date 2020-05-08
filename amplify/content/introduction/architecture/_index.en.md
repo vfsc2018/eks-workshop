@@ -6,4 +6,4 @@ pre: "<b>1.1. </b>"
 ---
 
 
-![Data Lake Architecture](/images/architecture/architecture.png?width=50pc)
+![Modern Application Architecture](/images/architecture/architecture.png?width=50pc)

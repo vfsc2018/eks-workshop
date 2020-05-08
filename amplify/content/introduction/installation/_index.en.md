@@ -11,21 +11,18 @@ You have received AWS credentials; make sure you have sufficient privileges in y
 
 > 🎯 2. **Cloud9** Cloud-based IDE
 
-* [x] [AWS CloudFormation: provision your AWS Cloud resources](https://devops.job4u.io/Modern-Apps/VPC-Cloud9-IDE/index.html)
+* [x] 🚀[AWS CloudFormation: provision your AWS Cloud resources](https://devops.job4u.io/Modern-Apps/VPC-Cloud9-IDE/index.html)
   * [ ] You can choose Themes by selecting *View* / *Themes* / *Solarized* / *Solarized Dark* in the Cloud9 workspace menu.
 
-* [x] Install & Verify CDK
+  * [x] Verify CDK
 
-``` bash
-# npm install -g aws-cdk
+  ``` bash
+  cdk --version
+  ```
 
-cdk --version
-```
-
-* [x] Prepare CDK prerequisite
-
-```bash
-sudo yum install -y npm
-npm install -g aws-cdk --force
-npm install -g typescript@latest
-```
+  * {{%expand "✍️ Install CDK" %}}
+  
+  ```bash
+  npm install -g aws-cdk
+  ```
+  {{% /expand%}}

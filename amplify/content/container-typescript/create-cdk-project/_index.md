@@ -12,7 +12,7 @@ CloudFormation template for the starter app and how to deploy your app into your
 
 > **Step 1.** Creating a CDK application
 
-```
+```bash
 mkdir cdk-eks
 cd cdk-eks
 
@@ -31,14 +31,10 @@ npm run watch
 
 > **Step 3.** Explore Your Project Directory 
 
-```
-## RHEL/CentOS and Fedora Linux
-sudo yum install tree -y
-## Debian/Ubuntu, Mint Linux
-# sudo apt-get install tree -y
-## MacOS
-# brew install tree
-tree
+```bash
+npm install -g tree-cli
+
+~/.nvm/versions/node/v10.20.1/bin/tree -l 2 -o project-directory.txt
 ```
 
 {{%expand "✍️ Project Structure" %}}
@@ -61,13 +57,13 @@ tree
 
 > **Step 4.** Synthesize a template from your app
 
-```
+```bash
 cdk synth
 ```
 
 > **Step 5.** Bootstrapping an environment then Deploy
 
-```
+```bash
 cdk bootstrap
 
 cdk deploy cdk-eks

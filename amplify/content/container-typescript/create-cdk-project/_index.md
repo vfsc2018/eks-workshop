@@ -66,7 +66,7 @@ cdk synth
 ```bash
 cdk bootstrap
 
-cdk deploy cdk-eks
+cdk deploy CdkEksStack
 ```
 
 {{%expand "✍️ Bootstrapping an Environment" %}}

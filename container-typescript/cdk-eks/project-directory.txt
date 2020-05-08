@@ -1,11 +1,11 @@
-/home/ec2-user/environment/modern-apps/container-typescript/cdk-eks
+modern-apps/container-typescript/cdk-eks
+.
 ├── README.md
 ├── bin
 |  └── cdk-eks.ts
 ├── cdk.json
 ├── jest.config.js
 ├── lib
-|  ├── cdk-eks-ec2-stack.ts
 |  └── cdk-eks-stack.ts
 ├── package-lock.json
 ├── package.json

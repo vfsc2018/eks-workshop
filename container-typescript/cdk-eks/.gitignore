@@ -3,12 +3,10 @@
 *.d.ts
 node_modules
 
-## CDK asset staging directory
+# CDK asset staging directory
 .cdk.staging
 cdk.out
 
-## Parcel build directories
+# Parcel build directories
 .cache
 .build
-
-##

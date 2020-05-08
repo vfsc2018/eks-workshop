@@ -1,50 +1,24 @@
 import * as cdk from '@aws-cdk/core';
 
 import * as ec2 from '@aws-cdk/aws-ec2';
-import * as iam from '@aws-cdk/aws-iam';
-import * as eks from '@aws-cdk/aws-eks';
+import * as dotenv from 'dotenv';
+
 
 export class CdkEksStack extends cdk.Stack {
   constructor(scope: cdk.Construct, id: string, props?: cdk.StackProps) {
     super(scope, id, props);
 
     // The code that defines your stack goes here
-    
-    // Step 1. Create a new VPC for our EKS Cluster
-    // The default VPC will create a NAT Gateway for each AZs --> Cost
-    const vpc = new ec2.Vpc(this, 'EKS-VPC', {
-      cidr: '10.10.0.0/16',
-      natGateways: 1
+    dotenv.config();
+    console.log(`vpc_name, vpc_cidr is ${process.env.AWS_VPC_NAME}, ${process.env.AWS_VPC_CIDR}`);
+
+    // Step 1. Create a new VPC for our EKS Cluster    
+    var vpc_name = process.env.AWS_VPC_NAME || "EKS-VPC";
+    var vpc_cidr = process.env.AWS_VPC_CIDR || "10.0.0.0/16";
+    const vpc = new ec2.Vpc(this, vpc_name, {
+      cidr: vpc_cidr,
+      natGateways: 1 // ONLY 1 NAT Gateway --> Cost Optimization trade-off
     })
 
-    // Step 2. EKS Cluster with Fargate
-
-    // IAM Role for our Fargate worker nodes
-    const mastersRole = new iam.Role(this, 'masters-role', {
-      assumedBy: new iam.AccountRootPrincipal()
-    });
-
-    const fargateProfileRole = new iam.Role(this, "fargate-profile-role", {
-      assumedBy: new iam.ServicePrincipal("eks-fargate-pods.amazonaws.com"),
-      managedPolicies: [
-          iam.ManagedPolicy.fromAwsManagedPolicyName("AmazonEKSFargatePodExecutionRolePolicy")
-      ]
-    })
-
-    const cluster = new eks.FargateCluster(this, "fargate-cluster", {
-      clusterName: "EKS-Fargate",
-      vpc,
-      mastersRole,
-      coreDnsComputeType: eks.CoreDnsComputeType.FARGATE,
-      defaultProfile: {
-          fargateProfileName: "default-profile",
-          selectors: [
-              { namespace: "default" },
-              { namespace: "kube-system" }
-          ],
-          podExecutionRole: fargateProfileRole
-      }
-    });
-    
   }
 }

@@ -36,8 +36,8 @@ export class CdkEksStack extends cdk.Stack {
       cidr: vpc_cidr,
       natGateways: 1,
       subnetConfiguration: [
-        {  cidrMask: 24, subnetType: ec2.SubnetType.PUBLIC,  name: "Public"  },
-        {  cidrMask: 24, subnetType: ec2.SubnetType.PRIVATE, name: "Private" }
+        {  cidrMask: 24, subnetType: ec2.SubnetType.PUBLIC,  name: "PublicDMZ"  },
+        {  cidrMask: 24, subnetType: ec2.SubnetType.PRIVATE, name: "PrivateServices" }
         ],
       maxAzs: 2
     })
@@ -70,10 +70,10 @@ export class CdkEksStack extends cdk.Stack {
     * Step 3: Code* CI/CD
     */
 
-    var repository_name = process.env.ECR_REPOSITORY || "eks-ecr-repo";
-    console.log(`repository_name is ${process.env.ECR_REPOSITORY}`);
-    const ecrRepo = new ecr.Repository(this, "eks-ecr-repo", {
-      repositoryName: "eks-ecr-repo"
+    var ecr_repository_name = process.env.ECR_REPOSITORY || "eks-cicd-ecr-repo";
+    // console.log(`repository_name is ${process.env.ECR_REPOSITORY}`);
+    const ecrRepo = new ecr.Repository(this, ecr_repository_name, {
+      repositoryName: ecr_repository_name
     });
 
     // TODO AWS Code*

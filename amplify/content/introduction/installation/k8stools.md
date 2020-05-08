@@ -42,6 +42,7 @@ for command in kubectl jq envsubst aws
 ```
 
 #### Enable kubectl bash_completion
+
 ```
 kubectl completion bash >>  ~/.bash_completion
 . /etc/profile.d/bash_completion.sh
@@ -64,3 +65,26 @@ echo 'export PATH=$PATH:$HOME/bin' >> ~/.bashrc
 aws-iam-authenticator help
 ```
 -->
+
+#### Install the Helm CLI
+
+```bash
+curl -sSL https://raw.githubusercontent.com/helm/helm/master/scripts/get-helm-3 | bash
+
+helm version --short
+```
+
+#### Stable `Helm Chart` Repository
+
+```bash
+helm repo add stable https://kubernetes-charts.storage.googleapis.com/
+
+helm search repo stable
+```
+
+```bash
+helm completion bash >> ~/.bash_completion
+. /etc/profile.d/bash_completion.sh
+. ~/.bash_completion
+source <(helm completion bash)
+```

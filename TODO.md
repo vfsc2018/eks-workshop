@@ -38,4 +38,52 @@ A list of public repositories, content, and web from re:Invent 2019 Workshops. M
 * [ ] http://arun-gupta.github.io/hpa-app-metrics/
 * [ ] https://github.com/TysonWorks/cdk-examples/blob/master/elasticsearch-cluster/index.ts
 * [ ] https://github.com/aws-samples/amazon-eks-fluent-logging-examples
-* [ ] 
+
+
+
+
+curl https://raw.githubusercontent.com/aws-samples/amazon-cloudwatch-container-insights/latest/k8s-deployment-manifest-templates/deployment-mode/daemonset/container-insights-monitoring/quickstart/cwagent-fluentd-quickstart.yaml | sed "s/{{cluster_name}}/Cluster9EE0221C-d5f60797ba6746bcacc25929fb88d5fe/;s/{{region_name}}/ap-southeast-1/" | kubectl apply -f -
+curl https://raw.githubusercontent.com/aws-samples/amazon-cloudwatch-container-insights/latest/k8s-deployment-manifest-templates/deployment-mode/daemonset/container-insights-monitoring/quickstart/cwagent-fluentd-quickstart.yaml | sed "s/{{cluster_name}}/Cluster9EE0221C-d5f60797ba6746bcacc25929fb88d5fe/;s/{{region_name}}/ap-southeast-1/" | kubectl apply -f -
+
+curl https://raw.githubusercontent.com/aws-samples/amazon-cloudwatch-container-insights/master/k8s-yaml-templates/quickstart/cwagent-fluentd-quickstart.yaml | sed "s/{{cluster_name}}/Cluster9EE0221C-d5f60797ba6746bcacc25929fb88d5fe/;s/{{region_name}}/ap-southeast-1/" | kubectl apply -f -
+
+kubectl apply -f https://raw.githubusercontent.com/aws-samples/amazon-cloudwatch-container-insights/latest/k8s-deployment-manifest-templates/deployment-mode/daemonset/container-insights-monitoring/cloudwatch-namespace.yaml
+
+kubectl apply -f https://raw.githubusercontent.com/aws-samples/amazon-cloudwatch-container-insights/latest/k8s-deployment-manifest-templates/deployment-mode/daemonset/container-insights-monitoring/cwagent/cwagent-serviceaccount.yaml
+
+curl -O https://raw.githubusercontent.com/aws-samples/amazon-cloudwatch-container-insights/latest/k8s-deployment-manifest-templates/deployment-mode/daemonset/container-insights-monitoring/cwagent/cwagent-configmap.yaml
+
+kubectl apply -f cwagent-configmap.yaml
+
+https://console.aws.amazon.com/cloudwatch/home#cw:dashboard=Container;context=~(clusters~(~)~dimensions~(~)~performanceType~'ClusterName)
+
+curl -O  https://raw.githubusercontent.com/aws-samples/amazon-cloudwatch-container-insights/latest/k8s-deployment-manifest-templates/deployment-mode/daemonset/container-insights-monitoring/cwagent/cwagent-daemonset.yaml
+===
+echo ${CLUSTER_NAME}  ${AWS_REGION}
+
+curl https://raw.githubusercontent.com/aws-samples/amazon-cloudwatch-container-insights/latest/k8s-deployment-manifest-templates/deployment-mode/daemonset/container-insights-monitoring/quickstart/cwagent-fluentd-quickstart.yaml | sed "s/{{cluster_name}}/${CLUSTER_NAME}/;s/{{region_name}}/${AWS_REGION}/" | kubectl apply -f -
+
+
+===
+cluster-name=Cluster9EE0221C-d5f60797ba6746bcacc25929fb88d5fe
+region=ap-southeast-1
+curl https://raw.githubusercontent.com/aws-samples/amazon-cloudwatch-container-insights/master/k8s-yaml-templates/quickstart/cwagent-fluentd-quickstart.yaml | sed "s/{{cluster_name}}/$cluster_name/;s/{{region_name}}/$region/" | kubectl apply -f -
+
+curl https://raw.githubusercontent.com/aws-samples/amazon-cloudwatch-container-insights/master/k8s-yaml-templates/quickstart/cwagent-fluentd-quickstart.yaml -o cwagent-fluentd-quickstart.yaml -silent
+
+===
+
+
+kubectl create configmap cluster-info \
+      --from-literal=cluster.name=${CLUSTER_NAME} \
+      --from-literal=logs.region=${AWS_REGION} -n amazon-cloudwatch
+
+
+https://ap-southeast-1.console.aws.amazon.com/cloudwatch/home?region=ap-southeast-1#cw:dashboard=Container
+
+curl https://raw.githubusercontent.com/aws-samples/amazon-cloudwatch-container-insights/prometheus-beta/k8s-deployment-manifest-templates/deployment-mode/service/cwagent-prometheus/prometheus-k8s.yaml | 
+sed "s/{{cluster_name}}/${CLUSTER_NAME}/;s/{{region_name}}/${AWS_REGION}/" | kubectl apply -f -
+
+curl https://raw.githubusercontent.com/aws-samples/amazon-cloudwatch-container-insights/master/k8s-yaml-templates/quickstart/cwagent-fluentd-quickstart.yaml | sed "s/{{cluster_name}}/${CLUSTER_NAME}/;s/{{region_name}}/${AWS_REGION}/" | kubectl apply -f -
+
+https://us-east-2.console.aws.amazon.com/cloudwatch/home?region=us-east-2#cw:dashboard=Container;context=~(clusters~'eksworkshop-eksctl~dimensions~(~)~performanceType~'Service

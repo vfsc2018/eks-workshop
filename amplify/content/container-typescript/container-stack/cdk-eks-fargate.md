@@ -1,7 +1,7 @@
 +++
 title = "EKS Fargate"
-weight = 200
-pre= "<b>2.2.2. </b>"
+weight = 300
+pre= "<b>2.2.3. </b>"
 +++
 
 ### Step 1. Add a EKS-Fargate to your stack

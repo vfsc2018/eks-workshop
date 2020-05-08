@@ -6,31 +6,37 @@ pre= "<b>2.2.1. </b>"
 
 ### Step 1. Add a VPC to your stack
 
-* 🎯 Define the **DynamoDB Table** that maps Short Codes to URLs.
-    * **1.** Add an **import** statement at the beginning of `url_shortener/url_shortener_stack.py`
-    * **2.** Create an **aws_dynamodb.Table** `mapping-table` 
-        * [x] Table Name: `mapping-table`
-        * [x] Partition Key: `id` (AttributeType.STRING) 
+* [x] VPC Name: `EKS-VPC`
+* [x] VPC CIDR: `10.0.0.0/16`
+* [x] Number of NAT Gateway: `1` ~~(Cost Optimization trade-off)~~
 
-
-{{<highlight typescript "hl_lines=3 11-16">}}
+{{<highlight typescript "hl_lines=3-4 11-25">}}
 import * as cdk from '@aws-cdk/core';
 
+import * as dotenv from 'dotenv';
 import * as ec2 from '@aws-cdk/aws-ec2';
+
 
 export class CdkEksStack extends cdk.Stack {
   constructor(scope: cdk.Construct, id: string, props?: cdk.StackProps) {
     super(scope, id, props);
 
     // The code that defines your stack goes here
-    
-    // Step 1. Create a new VPC for our EKS Cluster
-    // The default VPC will create a NAT Gateway for each AZs --> Cost
-    const vpc = new ec2.Vpc(this, 'EKS-VPC', {
-      cidr: '10.10.0.0/16',
-      natGateways: 1
+    dotenv.config();
+    // console.log(`vpc_name is ${process.env.AWS_VPC_NAME}`);
+    // console.log(`vpc_cidr is ${process.env.AWS_VPC_CIDR}`);
+
+    /**
+     * Step 1. Create a new VPC for our EKS Cluster
+     */  
+    var vpc_name = process.env.AWS_VPC_NAME || "EKS-VPC";
+    var vpc_cidr = process.env.AWS_VPC_CIDR || "10.0.0.0/16";
+
+    const vpc = new ec2.Vpc(this, vpc_name, {
+      cidr: vpc_cidr,
+      natGateways: 1 // ONLY 1 NAT Gateway --> Cost Optimization trade-off
     })
-    
+
   }
 }
 {{</highlight>}}

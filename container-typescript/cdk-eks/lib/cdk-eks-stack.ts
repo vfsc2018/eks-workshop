@@ -37,7 +37,7 @@ export class CdkEksStack extends cdk.Stack {
     });
 
     var cluster_name = process.env.EKS_CLUSTER_NAME || "EKS-EC2";
-    console.log(`cluster_name is ${process.env.EKS_CLUSTER_NAME}`);
+    // console.log(`cluster_name is ${process.env.EKS_CLUSTER_NAME}`);
 
     const cluster = new eks.Cluster(this, cluster_name, {
       clusterName: cluster_name,

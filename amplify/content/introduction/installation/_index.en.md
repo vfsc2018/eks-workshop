@@ -21,8 +21,10 @@ You have received AWS credentials; make sure you have sufficient privileges in y
   ```
 
   * {{%expand "✍️ Install CDK" %}}
-  
   ```bash
-  npm install -g aws-cdk
+  # sudo yum install -y npm
+  # npm install -g typescript@latest
+  
+  npm install -g aws-cdk --force
   ```
   {{% /expand%}}

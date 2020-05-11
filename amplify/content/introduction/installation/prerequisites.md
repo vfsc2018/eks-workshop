@@ -43,3 +43,41 @@ aws iam get-instance-profile --instance-profile-name $INSTANCE_PROFILE_NAME --qu
 
 
 If the IAM role is not valid, <span style="color: red;">**DO NOT PROCEED**</span>. Go back and confirm the steps on this page.
+
+<!--
+> Download the eksctl binary
+
+```bash
+curl --silent --location "https://github.com/weaveworks/eksctl/releases/latest/download/eksctl_$(uname -s)_amd64.tar.gz" | tar xz -C /tmp
+
+sudo mv -v /tmp/eksctl /usr/local/bin
+
+eksctl version
+
+eksctl completion bash >> ~/.bash_completion
+. /etc/profile.d/bash_completion.sh
+. ~/.bash_completion
+```
+-->
+
+<!--
+> Export the Worker Role Name
+
+```bash
+export EKS_CLUSTER=EKS-EC2
+
+STACK_NAME=$(eksctl get nodegroup --cluster ${EKS_CLUSTER} -o json | jq -r '.[].StackName')
+ROLE_NAME=$(aws cloudformation describe-stack-resources --stack-name $STACK_NAME | jq -r '.StackResources[] | select(.ResourceType=="AWS::IAM::Role") | .PhysicalResourceId')
+echo "export ROLE_NAME=${ROLE_NAME}" | tee -a ~/.bash_profile
+```
+-->
+
+> Export the Worker Role Name: @FIXME
+
+```bash
+export CLUSTER_NAME=EKS-EC2
+export ROLE_NAME=eks-admin-role
+
+echo "export ROLE_NAME=${CLUSTER_NAME}" | tee -a ~/.bash_profile
+echo "export ROLE_NAME=${ROLE_NAME}" | tee -a ~/.bash_profile
+```

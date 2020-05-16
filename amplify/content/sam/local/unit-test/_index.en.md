@@ -12,8 +12,9 @@ As you typically would, with any software project, running the unit tests locall
 In the terminal, run this command from the `api-gateway/hello-world` folder to run the unit tests:
 
 ```
-cd ~/environment/api-gateway/hello-world
-
+cd ~/environment/api-gateway
+pip install pytest pytest-mock --user
+python -m pytest tests/ -v
 ```
 
 

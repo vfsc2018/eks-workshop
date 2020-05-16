@@ -74,7 +74,7 @@ Globals:
 ```
 
 ### Hello World Function
-The following section creates a Lambda function with an IAM execution role. It also specifies that the code for this Lambda function is located under a folder named _hello-world_, and that its entrypoint is a function named _lambdaHandler_ within a file named _app.js_. 
+The following section creates a Lambda function with an IAM execution role. It also specifies that the code for this Lambda function is located under a folder named _hello-world_, and that its entrypoint is a function named _lambdaHandler_ within a file named _app.py_. 
 
 ```yaml
   HelloWorldFunction:

@@ -55,7 +55,7 @@ Once your local server is running, we can send HTTP requests to test it. Chose o
 
 #### 🎯 3. Make a code change
 
-While the app is still running, open the file `sam-app/hello_world/app.py` and make a simple code change. For example, change the response message to return `hello my friend` instead of _hello world_. Your Lambda handler should look like this after the change: 
+While the app is still running, open the file `sam-app/hello_world/app.py` and make a simple code change. For example, change the response message to return `hello my friends` instead of ~~hello world~~. Your Lambda handler should look like this after the change: 
 
 
 **Note: Make sure you save the file after changing it.**

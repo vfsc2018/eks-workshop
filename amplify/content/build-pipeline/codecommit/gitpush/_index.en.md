@@ -36,6 +36,8 @@ If you can't find the CodeCommit repository URL, you can find it by running this
 
 ```
 git remote add origin REPLACE_WITH_HTTP_CLONE_URL
+
+# git remote set-url origin https://git-codecommit.ap-southeast-2.amazonaws.com/v1/repos/sam-app
 ```
 
 {{% notice tip %}}

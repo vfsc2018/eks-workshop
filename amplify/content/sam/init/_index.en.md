@@ -18,7 +18,7 @@ AWS SAM provides you with a command line tool, the AWS SAM CLI, that makes it ea
 
 Run the following command to scaffold a new project:
 ```bash
-sam init --runtime python3.8 -n api-gateway
+sam init --runtime python3.8 -n sam-app
 ```
 
 It will prompt for project configuration parameters: 
@@ -32,4 +32,4 @@ This [sam init](https://docs.aws.amazon.com/serverless-application-model/latest/
 For example: _sam init --location git+ssh://git@github.com/aws-samples/cookiecutter-aws-sam-python.git_
 {{% /notice%}}
 
-> Project should now be initialized: You should see a new folder `api-gateway` created with a basic Hello World scaffolding.
+> Project should now be initialized: You should see a new folder `sam-app` created with a basic Hello World scaffolding.

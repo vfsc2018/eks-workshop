@@ -9,7 +9,7 @@ Any CI/CD pipeline starts with a code repository. In this workshop we use AWS Co
 Run the following command from your terminal to create a new CodeCommit repository:
 
 ```
-aws codecommit create-repository --repository-name api-gateway
+aws codecommit create-repository --repository-name sam-app
 ```
 
 ✍️ You should see the following output. Copy the value of `cloneUrlHttp`, you will need it later.
@@ -19,12 +19,12 @@ aws codecommit create-repository --repository-name api-gateway
     "repositoryMetadata": {
         "accountId": "111111111111",
         "repositoryId": "ab66211f-fe79-4f0c-8b8f-937c73ff380f",
-        "repositoryName": "api-gateway",
+        "repositoryName": "sam-app",
         "lastModifiedDate": 1589626684.833,
         "creationDate": 1589626684.833,
-        "cloneUrlHttp": "https://git-codecommit.ap-southeast-2.amazonaws.com/v1/repos/api-gateway",
-        "cloneUrlSsh": "ssh://git-codecommit.ap-southeast-2.amazonaws.com/v1/repos/api-gateway",
-        "Arn": "arn:aws:codecommit:ap-southeast-2:701571471198:api-gateway"
+        "cloneUrlHttp": "https://git-codecommit.ap-southeast-2.amazonaws.com/v1/repos/sam-app",
+        "cloneUrlSsh": "ssh://git-codecommit.ap-southeast-2.amazonaws.com/v1/repos/sam-app",
+        "Arn": "arn:aws:codecommit:ap-southeast-2:701571471198:sam-app"
     }
 }
 {{</highlight>}}

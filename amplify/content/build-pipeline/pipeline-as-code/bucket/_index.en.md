@@ -9,7 +9,7 @@ Every Code Pipeline needs an artifacts bucket, also known as Artifact Store. Cod
 
 Let's get started and write the code for creating this bucket:
 
-**Make sure you are editing the pipeline-stack file with _.ts_ extension `api-gateway/pipeline/lib/pipeline-stack.ts`**
+**Make sure you are editing the pipeline-stack file with _.ts_ extension `sam-app/pipeline/lib/pipeline-stack.ts`**
 
 {{<highlight typescript "hl_lines=3-7 15-16">}}
 import * as cdk from '@aws-cdk/core';
@@ -36,7 +36,7 @@ export class PipelineStack extends cdk.Stack {
 Easy right? Now build and deploy the project like you did it earlier: 
 
 ```
-cd ~/environment/api-gateway/pipeline
+cd ~/environment/sam-app/pipeline
 npm run build
 cdk deploy
 ```

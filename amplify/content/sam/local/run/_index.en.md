@@ -11,10 +11,10 @@ pre= "<b>4.2.2. </b>"
 **2)** By running a **local HTTP Server** that simulates **API Gateway**. 
 We can learn about invoking individual functions in the [SAM Local Invoke reference](https://docs.aws.amazon.com/en_pv/serverless-application-model/latest/developerguide/sam-cli-command-reference-sam-local-invoke.html).
 
-In the terminal, run the following command from the root directory of the _api-gateway_ folder:
+In the terminal, run the following command from the root directory of the _sam-app_ folder:
 
 ```
-cd ~/environment/api-gateway
+cd ~/environment/sam-app
 sam local start-api
 
 # Making One-off Invocations
@@ -23,8 +23,8 @@ sam local invoke "HelloWorldFunction" -e events/event.json
 
 <!--
 {{% notice warning %}}   
-Error: Template file not found at /home/ec2-user/environment/api-gateway/hello_world/template.yml.  
-If you got this error is because you need to run the command from the same folder level where the SAM `template.yaml` is located. That is, the root directory of the api-gateway folder.
+Error: Template file not found at /home/ec2-user/environment/sam-app/hello_world/template.yml.  
+If you got this error is because you need to run the command from the same folder level where the SAM `template.yaml` is located. That is, the root directory of the sam-app folder.
 {{% /notice %}}
 -->
 
@@ -55,7 +55,7 @@ Once your local server is running, we can send HTTP requests to test it. Chose o
 
 #### 🎯 3. Make a code change
 
-While the app is still running, open the file `api-gateway/hello_world/app.py` and make a simple code change. For example, change the response message to return `hello my friend` instead of _hello world_. Your Lambda handler should look like this after the change: 
+While the app is still running, open the file `sam-app/hello_world/app.py` and make a simple code change. For example, change the response message to return `hello my friend` instead of _hello world_. Your Lambda handler should look like this after the change: 
 
 
 **Note: Make sure you save the file after changing it.**

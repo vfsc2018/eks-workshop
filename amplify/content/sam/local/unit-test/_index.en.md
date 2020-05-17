@@ -9,7 +9,7 @@ pre= "<b>4.2.3. </b>"
 
 As you typically would, with any software project, running the unit tests locally is no different for Serverless applications. Developers run them before pushing changes to a code repository. So, go ahead and run the unit tests for your project.
 
-In the terminal, run this command from the `api-gateway/hello-world` folder to run the unit tests:
+In the terminal, run this command from the `api-gateway/hello_world` folder to run the unit tests:
 
 ```
 cd ~/environment/api-gateway

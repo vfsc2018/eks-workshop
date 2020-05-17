@@ -36,6 +36,7 @@ export class PipelineStack extends cdk.Stack {
 Easy right? Now build and deploy the project like you did it earlier: 
 
 ```
+cd ~/environment/api-gateway/pipeline
 npm run build
 cdk deploy
 ```

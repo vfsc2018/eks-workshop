@@ -42,7 +42,7 @@ At this point, your project should have the structure below (only the most relev
 
 ```
 api-gateway                     # SAM application root
-├── hello-world                 # Lambda code
+├── hello_world                 # Lambda code
 ├── samconfig.toml              # Config file for manual deployments
 ├── template.yaml               # SAM template
 └── pipeline                    # CDK project root

@@ -17,15 +17,13 @@ In the terminal, run the following command from the root directory of the _api-g
 cd ~/environment/api-gateway
 sam local start-api
 
-## Making One-off Invocations
-# sam local invoke "HelloWorldFunction" -e events/event.json
-
-# sam local generate-event apigateway aws-proxy --body "" --path "hello" --method GET > api-event.json diff api-event.json event.json
+# Making One-off Invocations
+sam local invoke "HelloWorldFunction" -e events/event.json
 ```
 
 <!--
 {{% notice warning %}}   
-Error: Template file not found at /home/ec2-user/environment/api-gateway/hello-world/template.yml.  
+Error: Template file not found at /home/ec2-user/environment/api-gateway/hello_world/template.yml.  
 If you got this error is because you need to run the command from the same folder level where the SAM `template.yaml` is located. That is, the root directory of the api-gateway folder.
 {{% /notice %}}
 -->
@@ -48,7 +46,7 @@ Once your local server is running, we can send HTTP requests to test it. Chose o
     curl http://localhost:3000/hello
     ```
 
-* [x] Option B) Using a browser window
+* [ ] Option B) Using a browser window
 
     In Cloud9, go to the top menu and chose **Tools > Preview > Preview Running Application**. A browser tab will open, append `/hello` to the end of the URL. This will invoke your Lambda function locally.
 
@@ -57,7 +55,7 @@ Once your local server is running, we can send HTTP requests to test it. Chose o
 
 #### 🎯 3. Make a code change
 
-While the app is still running, open the file `api-gateway/hello-world/app.py` and make a simple code change. For example, change the response message to return `hello my friend` instead of _hello world_. Your Lambda handler should look like this after the change: 
+While the app is still running, open the file `api-gateway/hello_world/app.py` and make a simple code change. For example, change the response message to return `hello my friend` instead of _hello world_. Your Lambda handler should look like this after the change: 
 
 
 **Note: Make sure you save the file after changing it.**

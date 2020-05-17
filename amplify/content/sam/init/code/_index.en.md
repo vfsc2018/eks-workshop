@@ -9,7 +9,7 @@ pre = "<b>4.1.2. </b>"
 If you consider yourself an expert using Lambda functions, you can probably skip this page.
 {{% /notice%}}
 
-Let's take a look at the code of the Hello World Lambda function. Open the file `app.py` under the `hello-world` folder. **Note** that your function may have additional commented out code, those lines have been removed from the following example for clarity:
+Let's take a look at the code of the Hello World Lambda function. Open the file `app.py` under the `hello_world` folder. **Note** that your function may have additional commented out code, those lines have been removed from the following example for clarity:
 
 <!-- {{%expand "✍️ api-gateway/template.yaml" %}}
 {{% /expand%}} -->

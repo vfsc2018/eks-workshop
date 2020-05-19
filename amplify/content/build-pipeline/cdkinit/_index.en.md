@@ -8,7 +8,7 @@ pre= "<b>5.2. </b>"
 
 If you are using Cloud9, the CDK is already pre-installed but it will likely be a few versions old. Run the following commands from the Cloud9 terminal to remove your current version and install the latest one:
 ```
-npm uninstall -g aws-cdk
+npm uninstall -g aws-cdk --force
 npm install -g aws-cdk
 ```
 

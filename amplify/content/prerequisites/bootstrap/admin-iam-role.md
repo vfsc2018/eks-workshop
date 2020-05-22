@@ -1,7 +1,7 @@
 ---
 title: "IAM Role for your Workspace"
 chapter: false
-weight: 16
+weight: 15
 ---
 
 ### 1. Create an IAM Role for your Workspace
@@ -16,7 +16,7 @@ weight: 16
 
 1. Follow [this deep link to find your Cloud9 EC2 instance](https://console.aws.amazon.com/ec2/v2/home?#Instances:tag:Name=aws-cloud9-.*;sort=desc:launchTime)
 2. Select the instance, then choose **Actions / Instance Settings / Attach/Replace IAM Role**
-![c9instancerole](/images/introduction/c9instancerole.png)
+![c9instancerole](/images/prerequisites/c9instancerole.png)
 3. Choose **eks-admin-role** from the **IAM Role** drop down, and select **Apply**
 
 ### 3. Update IAM settings for your Workspace
@@ -29,7 +29,7 @@ Cloud9 normally manages IAM credentials dynamically. This isn't currently compat
 - Select **AWS SETTINGS**
 - Turn off **AWS managed temporary credentials**
 - Close the Preferences tab
-![c9disableiam](/images/introduction/c9disableiam.png)
+![c9disableiam](/images/prerequisites/c9disableiam.png)
 
 To ensure temporary credentials aren't already in place we will also remove
 any existing credentials file:

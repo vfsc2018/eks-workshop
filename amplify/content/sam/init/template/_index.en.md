@@ -29,7 +29,7 @@ Resources:
     Properties:
       CodeUri: hello_world/
       Handler: app.lambda_handler
-      Runtime: python3.8
+      Runtime: python3.7
       Events:
         HelloWorld:
           Type: Api # More info about API Event Source: https://github.com/awslabs/serverless-application-model/blob/master/versions/2016-10-31.md#api
@@ -82,7 +82,7 @@ The following section creates a Lambda function with an IAM execution role. It a
     Properties:
       CodeUri: hello_world/
       Handler: app.lambda_handler
-      Runtime: python3.8
+      Runtime: python3.7
       Events:
         HelloWorld:
           Type: Api 

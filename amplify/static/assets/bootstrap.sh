@@ -51,16 +51,16 @@ function upgrade_existing_packages() {
     # pipx install awscli
     python3 -m pip install --upgrade --user awscli
 
-    _logger "[+] Upgrade Python 3.8"
-    sudo yum install libssl-dev openssl
-    wget https://www.python.org/ftp/python/3.8.3/Python-3.8.3.tgz
-    tar xzvf Python-3.8.3.tgz
-    cd Python-3.8.3
-    ./configure
-    make
-    sudo make install
-    cd ..
-    sudo rm -rf Python-3.8.3.tgz Python-3.8.3
+    # _logger "[+] Upgrade Python 3.8"
+    # sudo yum install libssl-dev openssl
+    # wget https://www.python.org/ftp/python/3.8.3/Python-3.8.3.tgz
+    # tar xzvf Python-3.8.3.tgz
+    # cd Python-3.8.3
+    # ./configure
+    # make
+    # sudo make install
+    # cd ..
+    # sudo rm -rf Python-3.8.3.tgz Python-3.8.3
     python3 -V
 }
 

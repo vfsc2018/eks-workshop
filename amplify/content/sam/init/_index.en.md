@@ -18,7 +18,7 @@ AWS SAM provides you with a command line tool, the AWS SAM CLI, that makes it ea
 
 Run the following command to scaffold a new project:
 ```bash
-sam init --runtime python3.8 -n sam-app
+sam init --runtime python3.7 -n sam-app
 ```
 
 It will prompt for project configuration parameters: 

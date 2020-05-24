@@ -1,13 +1,17 @@
 +++
 title = "Container & TypeScript-CDK"
-chapter = true
 weight = 20
 pre= "<b>2. </b>"
 +++
 
-# Container Micro-Services using TypeScript CDK
 
-> 🎯 To run a the CDK TypeScript
+> 🎯 1. CI/CD with Blue/Green & Canary Deployments on EKS using CDK
+
+![Blue/Green and Canary Deployments on EKS using CDK](/images/container-typescript/eks-bg-2.png?width=50pc)
+
+
+
+> 🎯 2. To run a the CDK TypeScript
 
 ```bash
 npm install -g aws-cdk --force

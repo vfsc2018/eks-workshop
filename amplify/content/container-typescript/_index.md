@@ -10,7 +10,7 @@ pre= "<b>2. </b>"
 > 🎯 To run a the CDK TypeScript
 
 ```bash
-npm install -g aws-cdk
+npm install -g aws-cdk --force
 
 cd container-typescript/cdk-eks
 npm install
@@ -20,10 +20,6 @@ cdk synth
 cdk bootstrap aws://$ACCOUNT_ID/$AWS_REGION
 cdk deploy
 ```
-
-
-* [ ] [twitter4u-docker](https://github.com/nnthanh101/modern-apps/tree/master/CDK-TypeScript-Node/twitter4u-docker)
-* [ ] [twitter4u-fargate](https://github.com/nnthanh101/modern-apps/tree/master/CDK-TypeScript-Node/twitter4u-fargate)
 
 
 {{% children showhidden="false" %}}

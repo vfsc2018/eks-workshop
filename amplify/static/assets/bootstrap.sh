@@ -62,6 +62,18 @@ function upgrade_existing_packages() {
     # cd ..
     # sudo rm -rf Python-3.8.3.tgz Python-3.8.3
     python3 -V
+
+    ##
+    # echo "EBS Amazon Linux 2 & CenOS"
+    # echo "EBS Extending a Partition on a T2/T3 Instance"
+    # sudo file -s /dev/nvme?n*
+    # sudo growpart /dev/nvme0n1 1
+    # lsblk
+    # echo "Extend an ext2/ext3/ext4 file system"
+    # sudo yum install xfsprogs
+    # sudo resize2fs /dev/nvme0n1p1
+    # df -h
+
 }
 
 function install_utility_tools() {

@@ -28,14 +28,14 @@ pre: "<b>1.3. </b>"
     cdk --version
     ```
 
-    {{%expand "✍️ Install CDK" %}}
+    > ✍️ Install CDK
+
     ```bash
     # sudo yum install -y npm
     # npm install -g typescript@latest
     
     npm install -g aws-cdk --force
     ```
-    {{% /expand%}}
 
     * [ ] You can choose Themes by selecting *View* / *Themes* / *Solarized* / *Solarized Dark* in the Cloud9 workspace menu.
 

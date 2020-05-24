@@ -65,6 +65,7 @@ cdk synth
 
 ```bash
 cdk bootstrap
+# cdk bootstrap aws://$ACCOUNT_ID/$AWS_REGION
 
 cdk deploy CdkEksStack
 ```

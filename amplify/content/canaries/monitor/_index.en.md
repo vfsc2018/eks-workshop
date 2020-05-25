@@ -7,7 +7,7 @@ Canary deployments are considerably more successful if the code is being monitor
 
 ### Define a CloudWatch Alarm
 
-Add the following alarm definition to the `sam-app/template.yaml` file in the _Resources_ section after the _HelloWorldFunction_ definition. 
+Add the following alarm definition to the `sls-api/template.yaml` file in the _Resources_ section after the _HelloWorldFunction_ definition. 
 
 ```
 CanaryErrorsAlarm:
@@ -42,7 +42,7 @@ Your `template.yaml` should look like this:
 {{<highlight yaml "hl_lines=20-21 29-46">}}
 AWSTemplateFormatVersion: '2010-09-09'
 Transform: AWS::Serverless-2016-10-31
-Description: SAM Template for sam-app
+Description: SAM Template for sls-api
 
 # More info about Globals: https://github.com/awslabs/serverless-application-model/blob/master/docs/globals.rst
 Globals:
@@ -107,7 +107,7 @@ Outputs:
 Run the following command on your terminal: 
 
 ```
-cd ~/environment/sam-app
+cd ~/environment/sls-api
 sam validate
 ```
 
@@ -115,7 +115,7 @@ If the template is correct, you will see `template.yaml is a valid SAM Template`
 
 ### Push the changes
 
-In the terminal, run the following commands from the root directory of your `sam-app` project.
+In the terminal, run the following commands from the root directory of your `sls-api` project.
 
 ```
 git add .

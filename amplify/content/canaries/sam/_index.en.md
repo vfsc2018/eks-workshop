@@ -4,7 +4,7 @@ date = 2019-11-11T14:46:02-08:00
 weight = 15
 +++
 
-Open the SAM template (`sam-app/template.yaml`) in your project and add the following lines to the HelloWorldFunction properties section. 
+Open the SAM template (`sls-api/template.yaml`) in your project and add the following lines to the HelloWorldFunction properties section. 
 
 ```
 AutoPublishAlias: live
@@ -18,7 +18,7 @@ It should look like this:
 {{<highlight yaml "hl_lines=17-19">}}
 AWSTemplateFormatVersion: '2010-09-09'
 Transform: AWS::Serverless-2016-10-31
-Description: SAM Template for sam-app
+Description: SAM Template for sls-api
 
 # More info about Globals: https://github.com/awslabs/serverless-application-model/blob/master/docs/globals.rst
 Globals:
@@ -77,7 +77,7 @@ The _Linear_ strategy means that traffic is shifted in equal increments with an 
 Run the following command on your terminal: 
 
 ```
-cd ~/environment/sam-app
+cd ~/environment/sls-api
 sam validate
 ```
 
@@ -85,7 +85,7 @@ If the template is correct, you will see `template.yaml is a valid SAM Template`
 
 ### Push the changes
 
-In the terminal, run the following commands from the root directory of your `sam-app` project.
+In the terminal, run the following commands from the root directory of your `sls-api` project.
 
 ```
 git add .

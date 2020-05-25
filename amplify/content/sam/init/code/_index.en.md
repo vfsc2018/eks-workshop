@@ -11,7 +11,7 @@ If you consider yourself an expert using Lambda functions, you can probably skip
 
 Let's take a look at the code of the Hello World Lambda function. Open the file `app.py` under the `hello_world` folder. **Note** that your function may have additional commented out code, those lines have been removed from the following example for clarity:
 
-<!-- {{%expand "✍️ sam-app/template.yaml" %}}
+<!-- {{%expand "✍️ sls-api/template.yaml" %}}
 {{% /expand%}} -->
 
 ```python

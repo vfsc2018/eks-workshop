@@ -7,7 +7,7 @@ pre = "<b>5.3.5. </b>"
 
 The **Deploy Stage** is where your SAM application and all its resources are created an in an AWS account. The most common way to do this is by using CloudFormation ChangeSets to deploy. This means that this stage will have 2 actions: the _CreateChangeSet_ and the _ExecuteChangeSet_.
 
-Add the Deploy stage to your `sam-app/pipeline/lib/pipeline-stack.ts`:
+Add the Deploy stage to your `sls-api/pipeline/lib/pipeline-stack.ts`:
 
 {{<highlight typescript "hl_lines=74-93">}} 
 import * as cdk from '@aws-cdk/core';
@@ -27,11 +27,11 @@ export class PipelineStack extends cdk.Stack {
     /** Step 1: */
     const artifactsBucket = new s3.Bucket(this, "ArtifactsBucket");
     
-    // Import existing CodeCommit sam-app repository
+    // Import existing CodeCommit sls-api repository
     const codeRepo = codecommit.Repository.fromRepositoryName(
       this,
       'AppRepository', // Logical name within CloudFormation
-      'sam-app' // Repository name
+      'sls-api' // Repository name
     );
     
     /** Step 2: */
@@ -89,15 +89,15 @@ export class PipelineStack extends cdk.Stack {
         new codepipeline_actions.CloudFormationCreateReplaceChangeSetAction({
           actionName: 'CreateChangeSet',
           templatePath: buildOutput.atPath("packaged.yaml"),
-          stackName: 'sam-app',
+          stackName: 'sls-api',
           adminPermissions: true,
-          changeSetName: 'sam-app-dev-changeset',
+          changeSetName: 'sls-api-dev-changeset',
           runOrder: 1
         }),
         new codepipeline_actions.CloudFormationExecuteChangeSetAction({
           actionName: 'Deploy',
-          stackName: 'sam-app',
-          changeSetName: 'sam-app-dev-changeset',
+          stackName: 'sls-api',
+          changeSetName: 'sls-api-dev-changeset',
           runOrder: 2
         }),
       ],
@@ -113,7 +113,7 @@ export class PipelineStack extends cdk.Stack {
 On your terminal, run the following commands from within the _pipeline_ directory:
 
 ```
-cd ~/environment/sam-app/pipeline
+cd ~/environment/sls-api/pipeline
 npm run build
 cdk deploy
 ```

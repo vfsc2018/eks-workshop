@@ -8,7 +8,7 @@ Monitoring the health of your canary allows CodeDeploy to make a decision to whe
 
 ### Introduce an error on purpose
 
-Lets break the Lambda function on purpose so that the _CanaryErrorsAlarm_ gets triggered during deployment. Update the lambda code in `sam-app/hello_world/app.py` to throw an error on every invocation, like this:
+Lets break the Lambda function on purpose so that the _CanaryErrorsAlarm_ gets triggered during deployment. Update the lambda code in `sls-api/hello_world/app.py` to throw an error on every invocation, like this:
 
 {{<highlight python "hl_lines=9">}}
     # return {
@@ -22,7 +22,7 @@ Lets break the Lambda function on purpose so that the _CanaryErrorsAlarm_ gets t
     raise SystemExit('This will cause a deployment rollback!')
 {{</highlight>}} 
 
-Make sure to update the unit test, otherwise the build will fail. Comment out every line in the `sam-app/buildspec.yml` file: 
+Make sure to update the unit test, otherwise the build will fail. Comment out every line in the `sls-api/buildspec.yml` file: 
 
 {{<highlight yaml "hl_lines=6">}}
   pre_build:
@@ -35,7 +35,7 @@ Make sure to update the unit test, otherwise the build will fail. Comment out ev
 
 ### Push the changes
 
-In the terminal, run the following commands from the root directory of your `sam-app` project.
+In the terminal, run the following commands from the root directory of your `sls-api` project.
 
 ```
 git add .

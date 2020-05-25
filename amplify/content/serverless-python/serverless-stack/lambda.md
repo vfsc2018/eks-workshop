@@ -165,36 +165,5 @@ cdk deploy url-shortener
 
 You'll notice that `cdk deploy` not only deployed your CloudFormation stack, but also archived and uploaded the `lambda` directory from your disk to the bootstrap bucket.
 
-## Testing our function
-
-Let's go to the AWS Lambda Console and test our function.
-
-1. Open the [AWS Lambda
-   Console](https://console.aws.amazon.com/lambda/home#/functions) (make sure
-   you are in the correct region).
-
-    You should see our function:
-
-    ![](./lambda-1.png)
-
-2. Click on the function name to go to the console.
-
-3. Click on the __Test__ button to open the __Configure test event__ dialog:
-
-    ![](./lambda-2.png)
-
-4. Select __Amazon API Gateway AWS Proxy__ from the __Event template__ list.
-
-5. Enter `test` under __Event name__.
-
-    ![](./lambda-3.png)
-
-6. Hit __Create__.
-
-7. Click __Test__ again and wait for the execution to complete.
-
-8. Expand __Details__ in the __Execution result__ pane and you should see our expected output:
-
-    ![](./lambda-4.png)
 
 # 👏

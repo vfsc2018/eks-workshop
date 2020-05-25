@@ -34,7 +34,7 @@ npm run watch
 ```bash
 npm install -g tree-cli
 
-~/.nvm/versions/node/v10.20.1/bin/tree -l 2 -o project-directory.txt
+~/.nvm/versions/node/v12.16.3/bin/tree -l 2 -o project-directory.txt
 ```
 
 {{%expand "✍️ Project Structure" %}}

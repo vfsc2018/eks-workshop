@@ -13,7 +13,7 @@ AWS CodeBuild is a great option because you only pay for the time where your bui
 
 ### Add the Build Stage
 
-Let's go ahead and add a Build stage to `sam-app/pipeline/lib/pipeline-stack.ts`:
+Let's go ahead and add a Build stage to `sls-api/pipeline/lib/pipeline-stack.ts`:
 
 {{<highlight typescript "hl_lines=46-71">}}
 import * as cdk from '@aws-cdk/core';
@@ -33,11 +33,11 @@ export class PipelineStack extends cdk.Stack {
     /** Step 1: */
     const artifactsBucket = new s3.Bucket(this, "ArtifactsBucket");
     
-    // Import existing CodeCommit sam-app repository
+    // Import existing CodeCommit sls-api repository
     const codeRepo = codecommit.Repository.fromRepositoryName(
       this,
       'AppRepository', // Logical name within CloudFormation
-      'sam-app' // Repository name
+      'sls-api' // Repository name
     );
     
     /** Step 2: */
@@ -98,7 +98,7 @@ export class PipelineStack extends cdk.Stack {
 From your terminal, run the following commands to deploy the pipeline:
 
 ```
-cd ~/environment/sam-app/pipeline
+cd ~/environment/sls-api/pipeline
 npm run build
 cdk deploy
 ```

@@ -5,18 +5,18 @@ chapter = false
 pre = "<b>4.1.1. </b>"
 +++
 
-Let's take a moment to understand the structure of a SAM application by exploring the SAM template which represents the architecture of your Serverless application. Go ahead and open the `sam-app/template.yaml` file.
+Let's take a moment to understand the structure of a SAM application by exploring the SAM template which represents the architecture of your Serverless application. Go ahead and open the `sls-api/template.yaml` file.
 
 It should have a structure like the following.
 
-{{%expand "✍️ sam-app/template.yaml" %}}
+{{%expand "✍️ sls-api/template.yaml" %}}
 ```yml
 AWSTemplateFormatVersion: '2010-09-09'
 Transform: AWS::Serverless-2016-10-31
 Description: >
-  sam-app
+  sls-api
 
-  SAM Template for sam-app
+  SAM Template for sls-api
 
 # More info about Globals: https://github.com/awslabs/serverless-application-model/blob/master/docs/globals.rst
 Globals:
@@ -61,7 +61,7 @@ Notice the transform line of the template, it tells CloudFormation that this tem
 ```yaml
 AWSTemplateFormatVersion: '2010-09-09'
 Transform: AWS::Serverless-2016-10-31
-Description: SAM Template for sam-app
+Description: SAM Template for sls-api
 ```
 
 ### Globals

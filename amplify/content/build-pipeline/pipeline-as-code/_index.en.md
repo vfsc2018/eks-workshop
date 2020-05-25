@@ -11,7 +11,7 @@ Open the file `lib/pipeline-stack.ts` in your Cloud9 workspace.
 Even though we haven't wrote any code yet, let's get familiar with how to build and deploy a CDK project, as you will be doing it multiple times in this workshop and you should get comfortable with the process. Start by building the project with the following command: 
 
 ```
-cd ~/environment/sam-app/pipeline
+cd ~/environment/sls-api/pipeline
 npm run build
 ```
 

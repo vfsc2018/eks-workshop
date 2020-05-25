@@ -14,9 +14,9 @@ npm install -g aws-cdk
 
 ### Initialize project
 
-Now, let's create a folder within our _sam-app_ directory where the pipeline code will reside.
+Now, let's create a folder within our _sls-api_ directory where the pipeline code will reside.
 ```
-cd ~/environment/sam-app
+cd ~/environment/sls-api
 mkdir pipeline
 cd pipeline
 ```
@@ -41,7 +41,7 @@ npm install --save @aws-cdk/aws-s3
 At this point, your project should have the structure below (only the most relevant files and folders are shown). Within the CDK project, the main file you will be interacting with is the _pipeline-stack.ts_. Don't worry about the rest of the files for now. 
 
 ```
-sam-app                     # SAM application root
+sls-api                     # SAM application root
 ├── hello_world                 # Lambda code
 ├── samconfig.toml              # Config file for manual deployments
 ├── template.yaml               # SAM template
@@ -58,7 +58,7 @@ sam-app                     # SAM application root
 
 ### Modify stack name
 
-Open the `bin/pipeline.ts` file, which is your entry point to the CDK project, and change the name of the stack to **sam-app-cicd**. 
+Open the `bin/pipeline.ts` file, which is your entry point to the CDK project, and change the name of the stack to **sls-api-cicd**. 
 
 {{<highlight typescript "hl_lines=7">}}
 #!/usr/bin/env node
@@ -67,7 +67,7 @@ import * as cdk from '@aws-cdk/core';
 import { PipelineStack } from '../lib/pipeline-stack';
 
 const app = new cdk.App();
-new PipelineStack(app, 'sam-app-cicd');
+new PipelineStack(app, 'sls-api-cicd');
 {{</highlight>}}
 
 **Save the file**.

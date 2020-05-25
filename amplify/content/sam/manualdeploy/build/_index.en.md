@@ -9,10 +9,10 @@ pre= "<b>4.3.1. </b>"
 
 To build a SAM project, we are going to use the `sam build` command. This command iterates through the functions in your application, looking for the manifest file (such as requirements.txt or package.json) that contains the dependencies, and automatically creates deployment artifacts.
 
-From the root of the `sam-app` folder, run the following command in the terminal:
+From the root of the `sls-api` folder, run the following command in the terminal:
 
 ```bash
-cd ~/environment/sam-app
+cd ~/environment/sls-api
 
 sam build
 ```
@@ -34,7 +34,7 @@ Take a moment to explore the content of the build folder. Notice that the unit t
 You can see the following top-level tree under .aws-sam:
 
 ```
-sam-app
+sls-api
 ├── template.yaml
 └── .aws_sam/
     └── build/

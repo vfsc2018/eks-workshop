@@ -19,8 +19,8 @@ from traffic101 import Traffic101
 from cdk_watchful import Watchful
 
 ## Our main Application Stack
-class UrlShortenerStack(BaseStack):
-# class UrlShortenerStack(core.Stack):
+class SlsApiStack(BaseStack):
+# class SlsApiStack(core.Stack):
 
     def __init__(self, scope: core.Construct, id: str, **kwargs) -> None:
         super().__init__(scope, id, **kwargs)
@@ -37,7 +37,7 @@ class UrlShortenerStack(BaseStack):
                 
         ## Defines Lambda resource & API-Gateway request handler
         ## All API requests will go to the same function.
-        handler = aws_lambda.Function(self, "UrlShortenerFunction",
+        handler = aws_lambda.Function(self, "SlsApiFunction",
                             code=aws_lambda.Code.asset("./lambda"),
                             handler="handler.main",
                             timeout=core.Duration.minutes(5),
@@ -49,7 +49,7 @@ class UrlShortenerStack(BaseStack):
         handler.add_environment('TABLE_NAME', table.table_name)
         
         ## Define the API endpoint and associate the handler
-        api = aws_apigateway.LambdaRestApi(self, "UrlShortenerApi",
+        api = aws_apigateway.LambdaRestApi(self, "SlsApiGateway",
                                            handler=handler)
 
         ## Map shortener.aws.job4u.io to this API Gateway endpoint
@@ -83,6 +83,6 @@ cdk diff '*'
 cdk deploy '*'
 ```
 
-> 🚀 [url-shortener.watchfulWatchfulDashboardF732C7A5](https://console.aws.amazon.com/cloudwatch/home?region=ap-southeast-1#dashboards:name=watchfulDashboard6A2D7A94-bVC8c7qrTBw0)
+> 🚀 [sls-api.watchfulWatchfulDashboardF732C7A5](https://console.aws.amazon.com/cloudwatch/home?region=ap-southeast-1#dashboards:name=watchfulDashboard6A2D7A94-bVC8c7qrTBw0)
 
 # 👍⛅🚀

@@ -109,7 +109,7 @@ class Traffic101(Construct):
 ```
 {{% /expand%}}
 
-> **3.3.3.2.** `url_shortener/url_shortener_stack.py`
+> **3.3.3.2.** `sls_api/sls_api_stack.py`
 
 {{<highlight python "hl_lines= 2 7 50-59">}}
 from aws_cdk import core
@@ -121,8 +121,8 @@ from base_common import BaseStack
 from traffic101 import Traffic101
 
 ## Our main Application Stack
-class UrlShortenerStack(BaseStack):
-# class UrlShortenerStack(core.Stack):
+class SlsApiStack(BaseStack):
+# class SlsApiStack(core.Stack):
 
     def __init__(self, scope: core.Construct, id: str, **kwargs) -> None:
         super().__init__(scope, id, **kwargs)
@@ -139,7 +139,7 @@ class UrlShortenerStack(BaseStack):
                 
         ## Defines Lambda resource & API-Gateway request handler
         ## All API requests will go to the same function.
-        handler = aws_lambda.Function(self, "UrlShortenerFunction",
+        handler = aws_lambda.Function(self, "SlsApiFunction",
                             code=aws_lambda.Code.asset("./lambda"),
                             handler="handler.main",
                             timeout=core.Duration.minutes(5),
@@ -151,7 +151,7 @@ class UrlShortenerStack(BaseStack):
         handler.add_environment('TABLE_NAME', table.table_name)
         
         ## Define the API endpoint and associate the handler
-        api = aws_apigateway.LambdaRestApi(self, "UrlShortenerApi",
+        api = aws_apigateway.LambdaRestApi(self, "SlsApiGateway",
                                            handler=handler)
 
         ## Map shortener.aws.job4u.io to this API Gateway endpoint
@@ -180,11 +180,11 @@ class TrafficGeneratorStack(BaseStack):
 
 from aws_cdk import core
 
-from url_shortener.url_shortener_stack import UrlShortenerStack, TrafficGeneratorStack
+from sls_api.sls_api_stack import SlsApiStack, TrafficGeneratorStack
 
 app = core.App()
-UrlShortenerStack(app, "url-shortener")
-TrafficGeneratorStack(app, 'url-shortener-load-test')
+SlsApiStack(app, "sls-api")
+TrafficGeneratorStack(app, 'sls-api-load-test')
 
 app.synth()
 {{</highlight>}}
@@ -192,9 +192,9 @@ app.synth()
 ### 3.3.4. CDK Diff then Deploy
 
 ```
-cdk diff url-shortener-load-test
+cdk diff sls-api-load-test
 
-cdk deploy url-shortener-load-test
+cdk deploy sls-api-load-test
 ```
 
 # 👏👍

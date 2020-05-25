@@ -18,7 +18,7 @@ cdk destroy
 You'll be asked:
 
 ```
-Are you sure you want to delete: url-shortener (y/n)?
+Are you sure you want to delete: sls-api (y/n)?
 ```
 
 Hit `y` and you'll see your stack being destroyed.

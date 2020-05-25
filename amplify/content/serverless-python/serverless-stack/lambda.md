@@ -7,7 +7,7 @@ pre= "<b>3.2.2. </b>"
 ## Step 1. Lambda Handler code
 
 * 🎯 We'll start with the **AWS Lambda Handler** code.
-    * **1.** Create a directory `lambda` in the root of your project tree (next to the url_shortener directory).
+    * **1.** Create a directory `lambda` in the root of your project tree (next to the sls_api directory).
     * **2.** Add a file called `lambda/handler.py` with the following contents:
 
 {{%expand "✍️ Copy & paste to lambda/handler.py" %}}
@@ -110,8 +110,8 @@ HTTP Headers. These are used by API Gateway to formulate the HTTP response to th
 
 ## Step 2. Add an AWS Lambda Function
 
-* [x] Add an `import` statement at the beginning of `url_shortener/url_shortener_stack.py`
-* [x] A **aws_lambda.Function** `UrlShortenerFunction` to your Stack.
+* [x] Add an `import` statement at the beginning of `sls_api/sls_api_stack.py`
+* [x] A **aws_lambda.Function** `SlsApiFunction` to your Stack.
 
 
 {{<highlight python "hl_lines=2 22-26 30-31">}}
@@ -119,7 +119,7 @@ from aws_cdk import core
 from aws_cdk import aws_dynamodb, aws_lambda, aws_apigateway
 
 
-class UrlShortenerStack(core.Stack):
+class SlsApiStack(core.Stack):
 
     def __init__(self, scope: core.Construct, id: str, **kwargs) -> None:
         super().__init__(scope, id, **kwargs)
@@ -136,7 +136,7 @@ class UrlShortenerStack(core.Stack):
                 
         ## Defines Lambda resource & API-Gateway request handler
         ## All API requests will go to the same function.
-        handler = aws_lambda.Function(self, "UrlShortenerFunction",
+        handler = aws_lambda.Function(self, "SlsApiFunction",
                             code=aws_lambda.Code.asset("./lambda"),
                             handler="handler.main",
                             timeout=core.Duration.minutes(5),
@@ -153,14 +153,14 @@ class UrlShortenerStack(core.Stack):
 Save your code, and let's take a quick look at the `cdk diff` before we deploy:
 
 ```
-cdk diff url-shortener
+cdk diff sls-api
 ```
 
 
 ## Step 3. Let's deploy
 
 ```
-cdk deploy url-shortener
+cdk deploy sls-api
 ```
 
 You'll notice that `cdk deploy` not only deployed your CloudFormation stack, but also archived and uploaded the `lambda` directory from your disk to the bootstrap bucket.

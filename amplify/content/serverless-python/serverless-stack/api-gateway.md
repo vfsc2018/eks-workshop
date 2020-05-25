@@ -12,7 +12,7 @@ from aws_cdk import core
 from aws_cdk import aws_dynamodb, aws_lambda, aws_apigateway
 
 
-class UrlShortenerStack(core.Stack):
+class SlsApiStack(core.Stack):
 
     def __init__(self, scope: core.Construct, id: str, **kwargs) -> None:
         super().__init__(scope, id, **kwargs)
@@ -29,7 +29,7 @@ class UrlShortenerStack(core.Stack):
                 
         ## Defines Lambda resource & API-Gateway request handler
         ## All API requests will go to the same function.
-        handler = aws_lambda.Function(self, "UrlShortenerFunction",
+        handler = aws_lambda.Function(self, "SlsApiFunction",
                             code=aws_lambda.Code.asset("./lambda"),
                             handler="handler.main",
                             timeout=core.Duration.minutes(5),
@@ -41,7 +41,7 @@ class UrlShortenerStack(core.Stack):
         handler.add_environment('TABLE_NAME', table.table_name)
         
         ## Define the API endpoint and associate the handler
-        api = aws_apigateway.LambdaRestApi(self, "UrlShortenerApi",
+        api = aws_apigateway.LambdaRestApi(self, "SlsApiGateway",
                                            handler=handler)
 {{</highlight>}}
 
@@ -51,14 +51,14 @@ class UrlShortenerStack(core.Stack):
 Save your code, and let's take a quick look at the `cdk diff` before we deploy:
 
 ```
-cdk diff url-shortener
+cdk diff sls-api
 ```
 
 
 ## Step 3. Let's deploy
 
 ```
-cdk deploy url-shortener
+cdk deploy sls-api
 ```
 
 ## Step 4: Stack outputs
@@ -66,7 +66,7 @@ cdk deploy url-shortener
 When deployment is complete, you'll notice this line:
 
 ```
-url-shortener.UrlShortenerApiEndpoint23405F0E = https://iswpmei782.execute-api.ap-southeast-1.amazonaws.com/prod/
+sls-api.SlsApiGatewayEndpoint23405F0E = https://iswpmei782.execute-api.ap-southeast-1.amazonaws.com/prod/
 ```
 
 This is a [stack output](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/stacks.html) that's automatically added by the API Gateway construct and includes the URL of the API Gateway endpoint.

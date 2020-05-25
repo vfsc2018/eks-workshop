@@ -13,8 +13,8 @@ CloudFormation template for the starter app and how to deploy your app into your
 > **Step 1.** Creating a CDK application
 
 ```
-mkdir url-shortener
-cd url-shortener
+mkdir sls-api
+cd sls-api
 
 cdk init --language python
 ```
@@ -48,12 +48,12 @@ tree
 
 {{%expand "✍️ Project Structure" %}}
 * `.env` - The python virtual envirnment information discussed in the previous section.
-* `url_shortener` - A Python module directory.
-    * `url_shortener.egg-info` - Folder that contains build information relevant for the packaging on the project
-    * `url_shortener_stack.py` - A custom CDK stack construct for use in your CDK application.
+* `sls_api` - A Python module directory.
+    * `sls_api.egg-info` - Folder that contains build information relevant for the packaging on the project
+    * `sls_api_stack.py` - A custom CDK stack construct for use in your CDK application.
 * `tests` - Contains all tests.
     * `unit` - Contains unit tests.
-        * `test_url_shortener.py` - A trivial test of the custom CDK stack created in the cdk-workshop package. This is mainly to demonstrate how tests can be hooked up to the project.
+        * `test_sls_api.py` - A trivial test of the custom CDK stack created in the cdk-workshop package. This is mainly to demonstrate how tests can be hooked up to the project.
 * `app.py` - The “main” for this sample application.
 * `cdk.json` - A configuration file for CDK that defines what executable CDK should run to generate the CDK construct tree.
 * `README.md` - The introductory README for this project.
@@ -72,7 +72,7 @@ cdk synth
 ```
 cdk bootstrap
 
-cdk deploy url-shortener
+cdk deploy sls-api
 ```
 
 {{%expand "✍️ Bootstrapping an Environment" %}}

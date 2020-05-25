@@ -7,7 +7,7 @@ pre= "<b>3.2.1. </b>"
 ### Step 1. Add an DynamoDB to your stack
 
 * 🎯 Define the **DynamoDB Table** that maps Short Codes to URLs.
-    * **1.** Add an **import** statement at the beginning of `url_shortener/url_shortener_stack.py`
+    * **1.** Add an **import** statement at the beginning of `sls_api/sls_api_stack.py`
     * **2.** Create an **aws_dynamodb.Table** `mapping-table` 
         * [x] Table Name: `mapping-table`
         * [x] Partition Key: `id` (AttributeType.STRING) 
@@ -18,7 +18,7 @@ from aws_cdk import core
 from aws_cdk import aws_dynamodb, aws_lambda, aws_apigateway
 
 
-class UrlShortenerStack(core.Stack):
+class SlsApiStack(core.Stack):
 
     def __init__(self, scope: core.Construct, id: str, **kwargs) -> None:
         super().__init__(scope, id, **kwargs)
@@ -40,12 +40,12 @@ class UrlShortenerStack(core.Stack):
 Save your code, and let's take a quick look at the `cdk diff` before we deploy:
 
 ```
-cdk diff url-shortener
+cdk diff sls-api
 ```
 
 
 ## Step 3. Let's deploy
 
 ```
-cdk deploy url-shortener
+cdk deploy sls-api
 ```

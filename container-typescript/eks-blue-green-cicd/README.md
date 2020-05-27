@@ -137,7 +137,8 @@ Now that the ALB is setup, complete the last part of the configuration by upload
 
 ```bash
 cd ../..
-pwd => confirm your current directory is eks-blue-green-cicd
+pwd 
+## confirm your current directory is eks-blue-green-cicd
 git add flask-docker-app/k8s/alb-ingress-controller.yaml
 git add flask-docker-app/k8s/flaskALBIngress_query.yaml
 git add flask-docker-app/k8s/flaskALBIngress_query2.yaml

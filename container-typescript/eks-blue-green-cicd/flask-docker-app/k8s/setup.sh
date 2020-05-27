@@ -17,11 +17,11 @@ fi
 
 #Create Ingress Controller
 if [ ! -f alb-ingress-controller.yaml ]; then
-    wget https://raw.githubusercontent.com/kubernetes-sigs/aws-alb-ingress-controller/v1.1.5/docs/examples/alb-ingress-controller.yaml
+    wget https://raw.githubusercontent.com/kubernetes-sigs/aws-alb-ingress-controller/v1.1.6/docs/examples/alb-ingress-controller.yaml
 fi
 sed -i "s/devCluster/$CLUSTER_NAME/g" alb-ingress-controller.yaml
 sed -i "s/# - --cluster-name/- --cluster-name/g" alb-ingress-controller.yaml
-kubectl apply -f https://raw.githubusercontent.com/kubernetes-sigs/aws-alb-ingress-controller/v1.1.5/docs/examples/rbac-role.yaml
+kubectl apply -f https://raw.githubusercontent.com/kubernetes-sigs/aws-alb-ingress-controller/v1.1.6/docs/examples/rbac-role.yaml
 kubectl apply -f alb-ingress-controller.yaml
 
 #Check

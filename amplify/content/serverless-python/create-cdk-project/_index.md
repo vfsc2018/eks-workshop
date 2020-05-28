@@ -16,7 +16,7 @@ CloudFormation template for the starter app and how to deploy your app into your
 mkdir sls-api
 cd sls-api
 
-cdk init --language python
+cdk init sample-app --language python
 ```
 
 > **Step 2.** Install packages
@@ -31,7 +31,8 @@ source .env/bin/activate
 # % .env\Scripts\activate.bat
 
 ## Install the required dependencies.
-pip install -r requirements.txt
+# pip install -r requirements.txt
+pip install --upgrade -r requirements.txt
 ```
 
 > **Step 3.** Explore Your Project Directory 

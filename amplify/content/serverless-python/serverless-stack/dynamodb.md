@@ -13,19 +13,34 @@ pre= "<b>3.2.1. </b>"
         * [x] Partition Key: `id` (AttributeType.STRING) 
 
 
-{{<highlight python "hl_lines=2 12-18">}}
-from aws_cdk import core
-from aws_cdk import aws_dynamodb, aws_lambda, aws_apigateway
+{{<highlight python "hl_lines=9 27-34">}}
+from aws_cdk import (
+    aws_iam as iam,
+    aws_sqs as sqs,
+    aws_sns as sns,
+    aws_sns_subscriptions as subs,
+    core
+)
 
+from aws_cdk import aws_dynamodb, aws_lambda, aws_apigateway
 
 class SlsApiStack(core.Stack):
 
     def __init__(self, scope: core.Construct, id: str, **kwargs) -> None:
         super().__init__(scope, id, **kwargs)
 
-        # The code that defines your stack goes here
-        
-        ## Define the table that maps short codes to URLs.
+        queue = sqs.Queue(
+            self, "SlsApiQueue",
+            visibility_timeout=core.Duration.seconds(300),
+        )
+
+        topic = sns.Topic(
+            self, "SlsApiTopic"
+        )
+
+        topic.add_subscription(subs.SqsSubscription(queue))
+
+        ## 1. Define the table that maps short codes to URLs.
         table = aws_dynamodb.Table(self, "mapping-table",
                 partition_key=aws_dynamodb.Attribute(
                     name="id",

@@ -12,16 +12,24 @@ pre= "<b>3.2. </b>"
 
 > 🎯 Install the **AWS API-Gateway, Lambda, DynamoDB** Construct Library
 
+
+{{%expand "✍️ requirements.txt" %}}
 ```
-pip install aws-cdk.aws_dynamodb
-pip install aws-cdk.aws-lambda
-pip install aws-cdk.aws_apigateway
+-e .
+pytest
 
-pip install aws-cdk.aws_route53
-pip install aws-cdk.aws_route53_targets
-pip install aws-cdk.aws_certificatemanager
-pip install aws-cdk.aws_ec2
-pip install aws-cdk.aws_ecs
+aws-cdk.aws_dynamodb
+aws-cdk.aws-lambda
+aws-cdk.aws_apigateway
 
-pip install cdk-watchful
+aws-cdk.aws_route53
+aws-cdk.aws_route53_targets
+aws-cdk.aws_certificatemanager
+aws-cdk.aws_s3
+cdk-watchful
+```
+{{% /expand%}}
+
+```bash
+pip install --upgrade -r requirements.txt
 ```

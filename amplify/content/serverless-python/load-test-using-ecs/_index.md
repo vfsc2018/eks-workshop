@@ -112,7 +112,13 @@ class Traffic101(Construct):
 > **3.3.3.2.** `sls_api/sls_api_stack.py`
 
 {{<highlight python "hl_lines= 2 7 50-59">}}
-from aws_cdk import core
+from aws_cdk import (
+    aws_iam as iam,
+    aws_sqs as sqs,
+    aws_sns as sns,
+    aws_sns_subscriptions as subs,
+    core
+)
 from aws_cdk.core import App, Construct, Duration
 from aws_cdk import aws_dynamodb, aws_lambda, aws_apigateway
 
@@ -178,7 +184,13 @@ class TrafficGeneratorStack(BaseStack):
 {{<highlight python "hl_lines=5 9">}}
 #!/usr/bin/env python3
 
-from aws_cdk import core
+from aws_cdk import (
+    aws_iam as iam,
+    aws_sqs as sqs,
+    aws_sns as sns,
+    aws_sns_subscriptions as subs,
+    core
+)
 
 from sls_api.sls_api_stack import SlsApiStack, TrafficGeneratorStack
 

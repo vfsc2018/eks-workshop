@@ -9,7 +9,13 @@ pre= "<b>3.4. </b>"
 ### 3.4.1. 🎯 Monitoring using 3rd-Party Library [cdk-watchful](https://pypi.org/project/cdk-watchful/) 
 
 {{<highlight python "hl_lines= 8 52-53">}}
-from aws_cdk import core
+from aws_cdk import (
+    aws_iam as iam,
+    aws_sqs as sqs,
+    aws_sns as sns,
+    aws_sns_subscriptions as subs,
+    core
+)
 from aws_cdk.core import App, Construct, Duration
 from aws_cdk import aws_dynamodb, aws_lambda, aws_apigateway
 

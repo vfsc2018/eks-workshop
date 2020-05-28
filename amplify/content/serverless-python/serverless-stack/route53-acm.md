@@ -9,7 +9,13 @@ pre= "<b>3.2.4. </b>"
 ### Step 1. Add an Route53 & ACM to your stack
 
 {{<highlight python "hl_lines= 4 7 43">}}
-from aws_cdk import core
+from aws_cdk import (
+    aws_iam as iam,
+    aws_sqs as sqs,
+    aws_sns as sns,
+    aws_sns_subscriptions as subs,
+    core
+)
 from aws_cdk import aws_dynamodb, aws_lambda, aws_apigateway
 
 from base_common import BaseStack

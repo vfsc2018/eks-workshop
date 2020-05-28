@@ -13,5 +13,5 @@ cd ~/environment/sls-api/hello_world
 
 And install the dependencies:
 ```
-pip install -r requirements.txt
+pip install --upgrade -r requirements.txt
 ```

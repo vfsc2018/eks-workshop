@@ -12,6 +12,7 @@ Even though we haven't wrote any code yet, let's get familiar with how to build 
 
 ```
 cd ~/environment/sls-api/pipeline
+npm install
 npm run build
 ```
 

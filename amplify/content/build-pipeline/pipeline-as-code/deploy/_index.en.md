@@ -114,6 +114,7 @@ On your terminal, run the following commands from within the _pipeline_ director
 
 ```
 cd ~/environment/sls-api/pipeline
+npm install
 npm run build
 cdk deploy
 ```

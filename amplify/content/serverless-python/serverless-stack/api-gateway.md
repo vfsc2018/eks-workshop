@@ -81,7 +81,7 @@ cdk deploy sls-api
 When deployment is complete, you'll notice this line:
 
 ```
-sls-api.SlsApiGatewayEndpoint23405F0E = https://iswpmei782.execute-api.ap-southeast-1.amazonaws.com/prod/
+sls-api.SlsApiGatewayEndpoint34AD9D64 = https://28ycdxpr1d.execute-api.ap-southeast-1.amazonaws.com/prod/
 ```
 
 This is a [stack output](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/stacks.html) that's automatically added by the API Gateway construct and includes the URL of the API Gateway endpoint.
@@ -97,19 +97,19 @@ your favorite Web Browser to hit this URL.
 {{% /notice %}}
 
 ```
-curl https://iswpmei782.execute-api.ap-southeast-1.amazonaws.com/prod/
+# curl https://28ycdxpr1d.execute-api.ap-southeast-1.amazonaws.com/prod/
 
-curl https://iswpmei782.execute-api.ap-southeast-1.amazonaws.com/prod/?targetUrl=https://aws.amazon.com/cdk
+curl https://28ycdxpr1d.execute-api.ap-southeast-1.amazonaws.com/prod/?targetUrl=https://aws.amazon.com/cdk
 ```
 
 Output should look like this: 
 
-Created URL: https://iswpmei782.execute-api.ap-southeast-1.amazonaws.com/prod/**8f1d8e01**
+Created URL: https://28ycdxpr1d.execute-api.ap-southeast-1.amazonaws.com/prod/**983407d9**
 
 > To access a shortened URL
 
 ```
-curl -I https://iswpmei782.execute-api.ap-southeast-1.amazonaws.com/prod/8f1d8e01
+curl -I https://28ycdxpr1d.execute-api.ap-southeast-1.amazonaws.com/prod/983407d9
 ```
 
 ---

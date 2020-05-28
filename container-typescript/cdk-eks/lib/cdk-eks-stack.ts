@@ -29,7 +29,7 @@ export class CdkEksStack extends cdk.Stack {
     * Step 1. Create a new VPC for our EKS Cluster
     */ 
     var vpc_name = process.env.AWS_VPC_NAME || "EKS-VPC";
-    var vpc_cidr = process.env.AWS_VPC_CIDR || "10.0.0.0/16";
+    var vpc_cidr = process.env.AWS_VPC_CIDR || "10.10.0.0/16";
     
     // ONLY 1 NAT Gateway --> Cost Optimization trade-off
     const vpc = new ec2.Vpc(this, vpc_name, {

@@ -1,33 +1,58 @@
 +++
-title = "Container & TypeScript-CDK"
+title = "EKS/ECS TypeScript-CDK"
 weight = 20
 pre= "<b>2. </b>"
 +++
 
 
-> 🎯 1. CI/CD with Blue/Green & Canary Deployments on EKS using CDK
+![Amazon EKS with AWS CDK](/images/container-typescript/cdk-eks-architecture.png?width=50pc)
 
-![Blue/Green and Canary Deployments on EKS using CDK](/images/container-typescript/eks-bg-1.png?width=50pc)
+{{%expand "✍️ Why Elastic Kubernetes Service (EKS) on AWS" %}}
+* Enterprise Class Platform to run **Production-Grade** workloads. [Rapid innovation based on our customer needs](https://github.com/aws/containers-roadmap/projects/1)
 
-![Blue/Green and Canary Deployments on EKS using CDK](/images/container-typescript/eks-bg-2.png?width=50pc)
+* **Native & Upstream Kubernetes** experience. Flexibility over your *Container* build including bring your own *AMI*, *VPC*, *Nodes* (*Spot*, *GPU* etc.), *IAM*, *Logging*, *Monitoring* and *Storage* etc.
 
-![Blue/Green and Canary Deployments on EKS using CDK](/images/container-typescript/eks-canary.png?width=50pc)
+* **Seamless Integrations** with AWS services, allowing our Customers to gain long term benefits around *cost*, *time to market* and *Developer productivity*.
+
+* Actively contributes to the **CNCF Kubernetes Community**
+
+{{% /expand%}}
 
 
+To provision a ready-to-use **Amazon EKS** cluster by simply `cdk deploy` with **AWS Cloud Development Kit**.
 
-> 🎯 2. To run a the CDK TypeScript
+### 🎯 To run a the CDK TypeScript
 
-```bash
-npm install -g aws-cdk --force
+* [x] ~~Prerequisites~~: [Quick-Setup Cloud9](http://localhost:8080/en/prerequisites/bootstrap/)
 
-cd container-typescript/cdk-eks
-npm install
-npm run build
+    ```
+    # npm install -g aws-cdk --force
+    cdk --version
 
-cdk synth
-cdk bootstrap aws://$ACCOUNT_ID/$AWS_REGION
-cdk deploy
-```
+    # git clone the project
+    git clone https://github.com/nnthanh101/sls-app.git
 
+    cp -avr sls-app/cdk-eks/ ~/environment/
+    ```
+
+* [x] Deploy **EksStack** in a new **VPC** (default)
+
+    ```
+    cd ~/environment/cdk-eks
+
+    # install other required npm modules
+    npm install
+    npm run build
+
+    cdk synth
+
+    # cdk bootstrapping (only required for the 1st time)
+    cdk bootstrap aws://$ACCOUNT_ID/$AWS_REGION
+
+    # cdk diff to see what will be created
+    cdk diff
+
+    cdk deploy
+    ```
 
 {{% children showhidden="false" %}}

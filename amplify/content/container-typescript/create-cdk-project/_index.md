@@ -67,7 +67,7 @@ cdk synth
 cdk bootstrap
 # cdk bootstrap aws://$ACCOUNT_ID/$AWS_REGION
 
-cdk deploy CdkEksStack
+cdk deploy EksStack
 ```
 
 {{%expand "✍️ Bootstrapping an Environment" %}}

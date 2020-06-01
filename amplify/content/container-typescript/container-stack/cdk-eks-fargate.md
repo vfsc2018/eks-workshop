@@ -1,7 +1,7 @@
 +++
 title = "EKS Fargate"
-weight = 300
-pre= "<b>2.2.3. </b>"
+weight = 400
+pre= "<b>2.2.4. </b>"
 +++
 
 ### Step 1. Add a EKS-Fargate to your stack
@@ -16,7 +16,7 @@ import * as ec2 from '@aws-cdk/aws-ec2';
 import * as iam from '@aws-cdk/aws-iam';
 import * as eks from '@aws-cdk/aws-eks';
 
-export class CdkEksStack extends cdk.Stack {
+export class EksStack extends cdk.Stack {
   constructor(scope: cdk.Construct, id: string, props?: cdk.StackProps) {
     super(scope, id, props);
 
@@ -70,12 +70,12 @@ Save your code, and let's take a quick look at the `cdk diff` before we deploy:
 ```
 npm run build
 
-cdk diff CdkEksStack
+cdk diff EksStack
 ```
 
 
 ## Step 3. Let's deploy
 
 ```
-cdk deploy CdkEksStack
+cdk deploy EksStack
 ```

@@ -1,18 +1,19 @@
 +++
-title = "EKS EC2"
-weight = 200
-pre= "<b>2.2.2. </b>"
+title = "EKS EC2 Spot"
+weight = 300
+pre= "<b>2.2.3. </b>"
 +++
 
-### 🎯 Step 1. Add a EC2 to your EKS stack
+### 🎯 Step 1. Add a EC2 Spot Instances to your EKS stack
 
-{{<highlight typescript "hl_lines=5-6 21-42">}}
+{{<highlight typescript "hl_lines=7 45-66">}}
 import * as cdk from '@aws-cdk/core';
 
 import * as dotenv from 'dotenv';
 import * as ec2 from '@aws-cdk/aws-ec2';
 import * as iam from '@aws-cdk/aws-iam';
 import * as eks from '@aws-cdk/aws-eks';
+import { InstanceType, Vpc } from '@aws-cdk/aws-ec2';
 
 export class CdkEksStack extends cdk.Stack {
   constructor(scope: cdk.Construct, id: string, props?: cdk.StackProps) {
@@ -40,7 +41,7 @@ export class CdkEksStack extends cdk.Stack {
     // console.log(`cluster_name is ${process.env.EKS_CLUSTER_NAME}`);
 
     /** Create the cluster 
-     * and a default managed NodeGroup of 2 x m5.large EC2-instances */
+    * and a default managed NodeGroup of 2 x m5.large EC2-instances */
     const cluster = new eks.Cluster(this, cluster_name, {
       clusterName: cluster_name,
       vpc,
@@ -49,6 +50,37 @@ export class CdkEksStack extends cdk.Stack {
       outputClusterName: true,
       version: '1.16',
     });
+    
+    /** Conditionally create spot instances */
+    // if(this.node.tryGetContext('with_spot_instances') === 'yes'){
+      // Create 2 * t3.large EC2 Spot instances
+      cluster.addCapacity('Spot', {
+        maxCapacity: 2,
+        spotPrice: '0.04',
+        instanceType: new InstanceType('t3.large'),
+        bootstrapOptions: {
+          kubeletExtraArgs: '--node-labels foo=bar'
+        },
+      })      
+    // };
+    
+    /** Conditionally add the 2nd NodeGroup */
+    // if(this.node.tryGetContext('with_2nd_nodegroup') === 'yes'){
+      // Create 2nd NodeGroup
+      cluster.addNodegroup('NodeGroup2', {
+        desiredSize: 1,
+        nodegroupName: 'NodeGroup2',
+        instanceType: new InstanceType('t3.large'),
+      })      
+    // };
+    
+    /** conditionally create service account for a pod */
+    // if(this.node.tryGetContext('with_irsa') === 'yes'){
+    // };
+    
+    /** conditionally create a fargate profile */
+    // if(this.node.tryGetContext('with_fargate_profile') === 'yes'){
+    // };
     
   }
 }

@@ -1,7 +1,8 @@
 # Modern Application Development
 
+> This repository requires `hugo` version [v0.64.0](https://github.com/gohugoio/hugo/releases/tag/v0.64.0).
+Please follow the link and install the right version.
 ### 1. Prerequisites
-
 ```
 brew install node
 brew install hugo

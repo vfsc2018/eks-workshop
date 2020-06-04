@@ -35,7 +35,7 @@ To provision a ready-to-use **Amazon EKS** cluster by simply `cdk deploy` with *
     cp -avr sls-app/cdk-eks/ ~/environment/
     ```
 
-* [x] Deploy **EksStack** in a new **VPC** (default)
+* [x] Deploy **CdkEksStack** in a new **VPC** (default)
 
     ```
     cd ~/environment/cdk-eks

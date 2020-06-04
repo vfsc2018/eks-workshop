@@ -4,7 +4,13 @@ weight = 300
 pre= "<b>2.2.3. </b>"
 +++
 
-### 🎯 Step 1. Add a EC2 Spot Instances to your EKS stack
+### Step 1. Add a EC2 Spot Instances to your EKS stack
+
+* 🎯 Create the new **EKS Cluster** and add **EC2** to the stack.
+    * **1.** Add an **import** statement at the beginning of `cdk-eks/lib/cdk-eks-stack.ts`
+    * **2.** Add an **EC2 Spot Instances** `Spot`
+        * [x] Instance Name: `Spot`
+        * [x] Instance Type: `t3.large`
 
 {{<highlight typescript "hl_lines=7 45-66">}}
 import * as cdk from '@aws-cdk/core';
@@ -126,17 +132,17 @@ Save your code, and let's take a quick look at the `cdk diff` before we deploy:
 ```
 npm run build
 
-cdk diff EksStack
+cdk diff CdkEksStack
 ```
 
 
 ## Step 3. Let's deploy
 
 ```
-cdk deploy EksStack
+cdk deploy CdkEksStack
 ```
 
-🎯 Once the CDK is deployed successfully, go to the [CloudFormation](https://ap-southeast-1.console.aws.amazon.com/cloudformation/home?region=ap-southeast-1#/), select the `EksStack` stack and go to the outputs section to copy the value from the field **~~Cluster~~ConfigCommand**; e.g. `EKSEC2ConfigCommand`.
+🎯 Once the CDK is deployed successfully, go to the [CloudFormation](https://ap-southeast-1.console.aws.amazon.com/cloudformation/home?region=ap-southeast-1#/), select the `CdkEksStack` stack and go to the outputs section to copy the value from the field **~~Cluster~~ConfigCommand**; e.g. `EKSEC2ConfigCommand`.
 
 ```bash
 aws eks update-kubeconfig --name EKS-EC2 --region ap-southeast-1 --role-arn arn:aws:iam::XXX

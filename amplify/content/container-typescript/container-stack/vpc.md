@@ -7,9 +7,12 @@ pre= "<b>2.2.1. </b>"
 
 ### Step 1. Add a **VPC** to your **EKS** stack
 
-* [x] VPC Name: `EKS-VPC`
-* [x] VPC CIDR: `10.10.0.0/16`
-* [x] Number of NAT Gateway: `1` ~~(Cost Optimization trade-off)~~
+* 🎯 Define the **VPC** that is used for EKS Cluster.
+    * **1.** Add an **import** statement at the beginning of `cdk-eks/lib/cdk-eks-stack.ts`
+    * **2.** Create an **aws-ec2.Vpc** `EKS-VPC` 
+        * [x] VPC Name: `EKS-VPC`
+        * [x] VPC CIDR: `10.10.0.0/16`
+        * [x] Number of NAT Gateway: `1` ~~(Cost Optimization trade-off)~~
 
 
 {{<highlight typescript "hl_lines=3-4 12 14-17 22-52">}}
@@ -75,14 +78,14 @@ Save your code, and let's take a quick look at the `cdk diff` before we deploy:
 ```
 npm run build
 
-cdk diff EksStack
+cdk diff CdkEksStack
 ```
 
 
 ## Step 3. Let's deploy
 
 ```
-cdk deploy EksStack
+cdk deploy CdkEksStack
 ```
 
 > {{%expand "✍️ Deploy in another AWS_REGION" %}} 

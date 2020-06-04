@@ -25,7 +25,7 @@ pre= "<b>2.2. </b>"
 > 🎯 Install the related Construct Library
 
 ```
-npm install
+npm install --save @aws-cdk/aws-ec2 @aws-cdk/aws-eks @aws-cdk/aws-iam dotenv
 ```
 
 

@@ -38,31 +38,6 @@ function upgrade_sam_cli() {
     ln -sf $(which sam) ~/.c9/bin/sam
 }
 
-function install_kubernetes_tools() {
-    _logger "[+] Install kubectl CLI (EKS 1.16)"
-    sudo curl --silent --location -o /usr/local/bin/kubectl https://amazon-eks.s3.us-west-2.amazonaws.com/1.16.8/2020-04-16/bin/linux/amd64/kubectl
-    sudo chmod +x /usr/local/bin/kubectl
-    kubectl version --short --client
-
-    _logger "[+] Enable kubectl bash_completion"
-    kubectl completion bash >>  ~/.bash_completion
-    . /etc/profile.d/bash_completion.sh
-    . ~/.bash_completion
-
-    _logger "[+] Install the Helm CLI"
-    curl -sSL https://raw.githubusercontent.com/helm/helm/master/scripts/get-helm-3 | bash
-    helm version --short
-
-    _logger "[+] Stable Helm Chart Repository"
-    helm repo add stable https://kubernetes-charts.storage.googleapis.com/
-    helm search repo stable
-
-    helm completion bash >> ~/.bash_completion
-    . /etc/profile.d/bash_completion.sh
-    . ~/.bash_completion
-    source <(helm completion bash)
-}
-
 function upgrade_existing_packages() {
     _logger "[+] Upgrading system packages"
     sudo yum update -y
@@ -89,14 +64,14 @@ function upgrade_existing_packages() {
     python3 -V
     # sudo update-alternatives --config python
 
-    _logger "[+] Installing latest Node/NPM & TypeScript" 
-    curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.35.3/install.sh | bash
-    . ~/.bashrc
-    nvm install lts/erbium
-    nvm use lts/erbium
-    nvm alias default lts/erbium
-    # yum install -y npm
-    # npm install -g typescript@latest
+    _logger "[+] Installing latest Node12 & TypeScript" 
+    sudo yum install -y gcc-c++ make
+    curl -sL https://rpm.nodesource.com/setup_12.x | sudo -E bash -
+    sudo yum install -y nodejs
+    npm install -g yarn
+    npm install -g typescript@latest
+    node -v 
+    npm -v 
 
     ##
     # echo "EBS Amazon Linux 2 & CenOS"
@@ -128,6 +103,31 @@ function install_linuxbrew() {
     echo "eval \$($(brew --prefix)/bin/brew shellenv)" >>~/.profile
 }
 
+function install_kubernetes_tools() {
+    _logger "[+] Install kubectl CLI (Kubernetes 1.16) from https://docs.aws.amazon.com/eks/latest/userguide/install-kubectl.html"
+    sudo curl --silent --location -o /usr/local/bin/kubectl https://amazon-eks.s3.us-west-2.amazonaws.com/1.16.8/2020-04-16/bin/linux/amd64/kubectl
+    sudo chmod +x /usr/local/bin/kubectl
+    kubectl version --short --client
+
+    _logger "[+] Enable kubectl bash_completion"
+    echo 'source <(kubectl completion bash)' >>~/.bash_profile
+    echo 'alias k=kubectl' >>~/.bash_profile
+    echo 'complete -F __start_kubectl k' >>~/.bash_profile
+
+    _logger "[+] Install the Helm CLI"
+    curl -sSL https://raw.githubusercontent.com/helm/helm/master/scripts/get-helm-3 | bash
+    helm version --short
+
+    _logger "[+] Stable Helm Chart Repository"
+    helm repo add stable https://kubernetes-charts.storage.googleapis.com/
+    helm search repo stable
+
+    _logger "[+] Enable helm bash_completion"
+    echo 'source <(helm completion bash)' >>~/.bash_profile
+    echo 'alias h=helm' >>~/.bash_profile
+    echo 'complete -F __start_helm h' >>~/.bash_profile
+}
+
 function verify_prerequisites_resources() {
     _logger "[+] Verify ACCOUNT_ID & AWS_REGION"
     export ACCOUNT_ID=$(aws sts get-caller-identity --output text --query Account)
@@ -147,7 +147,7 @@ function verify_prerequisites_resources() {
 
 function main() {
     upgrade_existing_packages
-    install_linuxbrew
+    # install_linuxbrew
     install_utility_tools
     # upgrade_sam_cli
     install_kubernetes_tools

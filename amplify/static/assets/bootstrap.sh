@@ -38,6 +38,31 @@ function upgrade_sam_cli() {
     ln -sf $(which sam) ~/.c9/bin/sam
 }
 
+function install_kubernetes_tools() {
+    _logger "[+] Install kubectl CLI (EKS 1.16)"
+    sudo curl --silent --location -o /usr/local/bin/kubectl https://amazon-eks.s3.us-west-2.amazonaws.com/1.16.8/2020-04-16/bin/linux/amd64/kubectl
+    sudo chmod +x /usr/local/bin/kubectl
+    kubectl version --short --client
+
+    _logger "[+] Enable kubectl bash_completion"
+    kubectl completion bash >>  ~/.bash_completion
+    . /etc/profile.d/bash_completion.sh
+    . ~/.bash_completion
+
+    _logger "[+] Install the Helm CLI"
+    curl -sSL https://raw.githubusercontent.com/helm/helm/master/scripts/get-helm-3 | bash
+    helm version --short
+
+    _logger "[+] Stable Helm Chart Repository"
+    helm repo add stable https://kubernetes-charts.storage.googleapis.com/
+    helm search repo stable
+
+    helm completion bash >> ~/.bash_completion
+    . /etc/profile.d/bash_completion.sh
+    . ~/.bash_completion
+    source <(helm completion bash)
+}
+
 function upgrade_existing_packages() {
     _logger "[+] Upgrading system packages"
     sudo yum update -y
@@ -49,7 +74,7 @@ function upgrade_existing_packages() {
     # _logger "[+] Installing pipx, and latest AWS CLI"
     # python3 -m pip install --user pipx
     # pipx install awscli
-    python3 -m pip install --upgrade --user awscli
+    python3 -m pip install --upgrade --user awscli && hash -r
 
     # _logger "[+] Upgrade Python 3.8"
     # sudo yum install libssl-dev openssl
@@ -62,6 +87,16 @@ function upgrade_existing_packages() {
     # cd ..
     # sudo rm -rf Python-3.8.3.tgz Python-3.8.3
     python3 -V
+    # sudo update-alternatives --config python
+
+    _logger "[+] Installing latest Node/NPM & TypeScript" 
+    curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.35.3/install.sh | bash
+    . ~/.bashrc
+    nvm install lts/erbium
+    nvm use lts/erbium
+    nvm alias default lts/erbium
+    # yum install -y npm
+    # npm install -g typescript@latest
 
     ##
     # echo "EBS Amazon Linux 2 & CenOS"
@@ -77,8 +112,8 @@ function upgrade_existing_packages() {
 }
 
 function install_utility_tools() {
-    _logger "[+] Installing jq"
-    sudo yum install -y jq
+    _logger "[+] Installing jq gettext bash-completion"
+    sudo yum install -y jq gettext bash-completion
 }
 
 function install_linuxbrew() {
@@ -93,11 +128,37 @@ function install_linuxbrew() {
     echo "eval \$($(brew --prefix)/bin/brew shellenv)" >>~/.profile
 }
 
+function verify_prerequisites_resources() {
+    _logger "[+] Verify ACCOUNT_ID & AWS_REGION"
+    export ACCOUNT_ID=$(aws sts get-caller-identity --output text --query Account)
+    export AWS_REGION=$(curl -s 169.254.169.254/latest/dynamic/instance-identity/document | jq -r '.region')
+    test -n "$ACCOUNT_ID" && echo ACCOUNT_ID is "$ACCOUNT_ID" || echo ACCOUNT_ID is not set
+    test -n "$AWS_REGION" && echo AWS_REGION is "$AWS_REGION" || echo AWS_REGION is not set
+
+    _logger "[+] Save ACCOUNT_ID & AWS_REGION to .bash_profile"
+    echo "export ACCOUNT_ID=${ACCOUNT_ID}" | tee -a ~/.bash_profile
+    echo "export AWS_REGION=${AWS_REGION}" | tee -a ~/.bash_profile
+    aws configure set default.region ${AWS_REGION}
+    aws configure get default.region
+
+    _logger "[+] Validate the IAM role eks-admin-role"
+    aws sts get-caller-identity --query Arn | grep eks-admin-role -q && echo "IAM role valid" || echo "IAM role NOT valid"
+}
+
 function main() {
     upgrade_existing_packages
     install_linuxbrew
     install_utility_tools
-    upgrade_sam_cli
+    # upgrade_sam_cli
+    install_kubernetes_tools
+
+    _logger "[+] Verify the binaries are in the path and executable" 
+    for command in kubectl jq envsubst aws
+    do
+        which $command &>/dev/null && echo "[x] $command in path" || echo "[ ] $command NOT FOUND"
+    done
+
+    verify_prerequisites_resources
 
     echo -e "${RED} [!!!!!!!!!] Open up a new terminal to reflect changes ${NC}"
     _logger "[+] Restarting Shell to reflect changes"

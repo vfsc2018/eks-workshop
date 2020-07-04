@@ -14,6 +14,7 @@ export AWS_REGION=$(curl -s 169.254.169.254/latest/dynamic/instance-identity/doc
 
 Check if AWS_REGION is set to desired region
 ```sh
+test -n "$ACCOUNT_ID" && echo ACCOUNT_ID is "$ACCOUNT_ID" || echo ACCOUNT_ID is not set
 test -n "$AWS_REGION" && echo AWS_REGION is "$AWS_REGION" || echo AWS_REGION is not set
 ```
  
@@ -25,7 +26,7 @@ aws configure set default.region ${AWS_REGION}
 aws configure get default.region
 ```
 
-### Validate the IAM role
+### Validate the IAM role `eks-admin-role`
 
 Use the [GetCallerIdentity](https://docs.aws.amazon.com/cli/latest/reference/sts/get-caller-identity.html) CLI command to validate that the Cloud9 IDE is using the correct IAM role.
 

@@ -22,8 +22,8 @@ Cloud9 requires third-party-cookies. You can whitelist the [specific domains]( h
 
 - [Create a Cloud9 Environment](https://ap-southeast-1.console.aws.amazon.com/cloud9/home?region=ap-southeast-1)
 - Select **Create environment**
-- Name it **cloud9**, and select **Next Step**
-- Stick with the default settings, and select **Next Step**: `t3.micro` & `Amazon Linux` | `Ubuntu Server 18.04 LTS`
+- Name it **`Cloud9`**, and select **Next Step**
+- Stick with the default settings, and select **Next Step**: `t3.micro` & `Amazon Linux` | ~~Ubuntu Server 18.04 LTS~~
 - Lastly, select **Create Environment**
 - When it comes up, customize the environment by closing the **welcome tab**
 and **lower work area**, and opening a new **terminal** tab in the main work area

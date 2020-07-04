@@ -1,11 +1,11 @@
 +++
-title = "EKS/ECS TypeScript-CDK"
+title = "Launch an EKS Cluster"
 weight = 20
 pre= "<b>2. </b>"
 +++
 
 
-![Amazon EKS with AWS CDK](/images/container-typescript/cdk-eks-architecture.png?width=50pc)
+![Launch & Configure an EKS Cluster](/images/container-typescript/cdk-eks-architecture.png?width=50pc)
 
 {{%expand "✍️ Why Elastic Kubernetes Service (EKS) on AWS" %}}
 * Enterprise Class Platform to run **Production-Grade** workloads. [Rapid innovation based on our customer needs](https://github.com/aws/containers-roadmap/projects/1)
@@ -23,7 +23,7 @@ To provision a ready-to-use **Amazon EKS** cluster by simply `cdk deploy` with *
 
 ### 🎯 To run a the CDK TypeScript
 
-* [x] ~~Prerequisites~~: [Quick-Setup Cloud9](http://localhost:8080/en/prerequisites/bootstrap/)
+* [x] ~~Prerequisites~~: [Quick-Setup Cloud9](../prerequisites/bootstrap/)
 
     ```
     # npm install -g aws-cdk --force

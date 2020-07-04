@@ -64,12 +64,13 @@ function upgrade_existing_packages() {
     python3 -V
     # sudo update-alternatives --config python
 
-    _logger "[+] Installing latest Node12 & TypeScript" 
+    _logger "[+] Installing latest Node12 & TypeScript & CDK" 
     sudo yum install -y gcc-c++ make
     curl -sL https://rpm.nodesource.com/setup_12.x | sudo -E bash -
     sudo yum install -y nodejs
     npm install -g yarn
     npm install -g typescript@latest
+    npm install -g aws-cdk --force
     node -v 
     npm -v 
 
@@ -140,6 +141,12 @@ function verify_prerequisites_resources() {
     echo "export AWS_REGION=${AWS_REGION}" | tee -a ~/.bash_profile
     aws configure set default.region ${AWS_REGION}
     aws configure get default.region
+    
+    _logger "[+] Verify the binaries are in the path and executable" 
+    for command in kubectl jq envsubst aws
+    do
+        which $command &>/dev/null && echo "[x] $command in path" || echo "[ ] $command NOT FOUND"
+    done
 
     _logger "[+] Validate the IAM role eks-admin-role"
     aws sts get-caller-identity --query Arn | grep eks-admin-role -q && echo "IAM role valid" || echo "IAM role NOT valid"
@@ -151,12 +158,6 @@ function main() {
     install_utility_tools
     # upgrade_sam_cli
     install_kubernetes_tools
-
-    _logger "[+] Verify the binaries are in the path and executable" 
-    for command in kubectl jq envsubst aws
-    do
-        which $command &>/dev/null && echo "[x] $command in path" || echo "[ ] $command NOT FOUND"
-    done
 
     verify_prerequisites_resources
 

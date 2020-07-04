@@ -1,7 +1,8 @@
 ---
-title: "IAM Role for your Workspace"
+title: "IAM Role for Workspace"
 chapter: false
-weight: 15
+weight: 40
+pre: "<b>1.2.1. </b>"
 ---
 
 ### 1. Create an IAM Role for your Workspace

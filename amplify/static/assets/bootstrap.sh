@@ -42,6 +42,9 @@ function upgrade_existing_packages() {
     _logger "[+] Upgrading system packages"
     sudo yum update -y
 
+    python3 -V
+    # sudo update-alternatives --config python 
+    
     _logger "[+] Upgrading Python pip and setuptools"
     python3 -m pip install --upgrade pip setuptools --user
 
@@ -50,8 +53,13 @@ function upgrade_existing_packages() {
     # python3 -m pip install --user pipx
     # pipx install awscli
     python3 -m pip install --upgrade --user awscli && hash -r
+}
 
-    # _logger "[+] Upgrade Python 3.8"
+function upgrade_python() {
+    _logger "[+] Upgrade Python 3.8"
+    brew install pyenv
+    pyenv -v
+    pyenv install 3.8.3
     # sudo yum install libssl-dev openssl
     # wget https://www.python.org/ftp/python/3.8.3/Python-3.8.3.tgz
     # tar xzvf Python-3.8.3.tgz
@@ -60,32 +68,40 @@ function upgrade_existing_packages() {
     # make
     # sudo make install
     # cd ..
-    # sudo rm -rf Python-3.8.3.tgz Python-3.8.3
-    python3 -V
-    # sudo update-alternatives --config python
+    # sudo rm -rf Python-3.8.3.tgz Python-3.8.3   
+    
+    echo 'alias python="python3.8"' >> ~/.bash_profile
+    echo 'alias python3="python3.8"' >> ~/.bash_profile
+}
 
+function upgrade_nodejs() {
     _logger "[+] Installing latest Node12 & TypeScript & CDK & CDK8s" 
-    sudo yum install -y gcc-c++ make
-    curl -sL https://rpm.nodesource.com/setup_12.x | sudo -E bash -
-    sudo yum install -y nodejs
+    brew install node@12
+    # sudo yum install -y gcc-c++ make
+    # curl -sL https://rpm.nodesource.com/setup_12.x | sudo -E bash -
+    # sudo yum install -y nodejs
+    # nvm install lts/erbium
+    # nvm use lts/erbium
+    # nvm alias default lts/erbium
+    # nvm uninstall lts/dubnium
+    
     npm install -g yarn
     npm install -g typescript@latest
     npm install -g aws-cdk --force
     npm i -g cdk8s-cli
     node -v 
     npm -v 
+}
 
-    ##
-    # echo "EBS Amazon Linux 2 & CenOS"
-    # echo "EBS Extending a Partition on a T2/T3 Instance"
-    # sudo file -s /dev/nvme?n*
-    # sudo growpart /dev/nvme0n1 1
-    # lsblk
-    # echo "Extend an ext2/ext3/ext4 file system"
-    # sudo yum install xfsprogs
-    # sudo resize2fs /dev/nvme0n1p1
-    # df -h
-
+function upgrade_ebs_storage() {
+    _logger "[+] AMZ-Linux2/CenOS EBS Extending a Partition on a T2/T3 Instance"
+    sudo file -s /dev/nvme?n*
+    sudo growpart /dev/nvme0n1 1
+    lsblk
+    echo "Extend an ext2/ext3/ext4 file system"
+    sudo yum install xfsprogs
+    sudo resize2fs /dev/nvme0n1p1
+    df -h
 }
 
 function install_utility_tools() {
@@ -154,10 +170,15 @@ function verify_prerequisites_resources() {
 }
 
 function main() {
+    install_linuxbrew
+    # upgrade_ebs_storage
+    
+    upgrade_nodejs
+    upgrade_python
     upgrade_existing_packages
-    # install_linuxbrew
+
     install_utility_tools
-    # upgrade_sam_cli
+    upgrade_sam_cli
     install_kubernetes_tools
 
     verify_prerequisites_resources

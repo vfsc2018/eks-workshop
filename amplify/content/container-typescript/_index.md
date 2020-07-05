@@ -30,15 +30,13 @@ To provision a ready-to-use **Amazon EKS** cluster by simply `cdk deploy` with *
     cdk --version
 
     # git clone the project
-    git clone https://github.com/nnthanh101/sls-app.git
-
-    cp -avr sls-app/cdk-eks/ ~/environment/
+    git clone https://github.com/nnthanh101/eks-workshop.git
     ```
 
-* [x] Deploy **CdkEksStack** in a new **VPC** (default)
+* [x] Deploy **EksClusterStack** in a new **VPC** (default)
 
     ```
-    cd ~/environment/cdk-eks
+    cd ~/environment/eks-workshop/eks-cluster
 
     # install other required npm modules
     npm install

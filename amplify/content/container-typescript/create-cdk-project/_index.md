@@ -13,8 +13,8 @@ CloudFormation template for the starter app and how to deploy your app into your
 > **Step 1.** Creating a CDK application
 
 ```bash
-mkdir cdk-eks
-cd cdk-eks
+mkdir eks-cluster
+cd eks-cluster
 
 cdk init --language typescript
 ```
@@ -24,29 +24,27 @@ cdk init --language typescript
 This will start the TypeScript compiler `tsc` in “watch” mode, which will monitor your project directory and will automatically compile any changes to your `.ts` files to `.js`.
 
 ```bash
-# npm run build
-
 npm run watch
+# npm run build
 ```
 
 > **Step 3.** Explore Your Project Directory 
 
 ```bash
 npm install -g tree-cli
-
-~/.nvm/versions/node/v12.16.3/bin/tree -l 2 -o project-directory.txt
+tree -l 2 -o project-directory.txt
 ```
 
 {{%expand "✍️ Project Structure" %}}
-* __`lib/cdk-eks-stack.ts`__ is where your CDK application's main stack is defined.
+* __`lib/eks-cluster-stack.ts`__ is where your CDK application's main stack is defined.
   This is the file we'll be spending most of our time in.
-* `bin/cdk-eks.ts` is the entrypoint of the CDK application. It will load
-  the stack defined in `lib/cdk-eks-stack.ts`.
+* `bin/eks-cluster.ts` is the entrypoint of the CDK application. It will load
+  the stack defined in `lib/eks-cluster-stack.ts`.
 * `package.json` is your npm module manifest. It includes information like the
   name of your app, version, dependencies and build scripts like "watch" and
   "build" (`package-lock.json` is maintained by npm)
 * `cdk.json` tells the toolkit how to run your app. In our case it will be
-  `"npx ts-node bin/cdk-eks.ts"`
+  `"npx ts-node bin/eks-cluster.ts"`
 * `tsconfig.json` your project's [typescript
   configuration](https://www.typescriptlang.org/docs/handbook/tsconfig-json.html)
 * `.gitignore` and `.npmignore` tell git and npm which files to include/exclude
@@ -67,7 +65,7 @@ cdk synth
 cdk bootstrap
 # cdk bootstrap aws://$ACCOUNT_ID/$AWS_REGION
 
-cdk deploy CdkEksStack
+cdk deploy EksClusterStack
 ```
 
 {{%expand "✍️ Bootstrapping an Environment" %}}

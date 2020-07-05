@@ -64,13 +64,14 @@ function upgrade_existing_packages() {
     python3 -V
     # sudo update-alternatives --config python
 
-    _logger "[+] Installing latest Node12 & TypeScript & CDK" 
+    _logger "[+] Installing latest Node12 & TypeScript & CDK & CDK8s" 
     sudo yum install -y gcc-c++ make
     curl -sL https://rpm.nodesource.com/setup_12.x | sudo -E bash -
     sudo yum install -y nodejs
     npm install -g yarn
     npm install -g typescript@latest
     npm install -g aws-cdk --force
+    npm i -g cdk8s-cli
     node -v 
     npm -v 
 

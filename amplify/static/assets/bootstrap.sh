@@ -72,6 +72,8 @@ function upgrade_python() {
     
     echo 'alias python="python3.8"' >> ~/.bash_profile
     echo 'alias python3="python3.8"' >> ~/.bash_profile
+    echo 'alias pip="pip3.8"' >> ~/.bash_profile
+    echo 'alias pip3="pip3.8"' >> ~/.bash_profile
 }
 
 function upgrade_nodejs() {
@@ -170,15 +172,16 @@ function verify_prerequisites_resources() {
 }
 
 function main() {
-    install_linuxbrew
     # upgrade_ebs_storage
+    install_linuxbrew
     
     upgrade_nodejs
-    upgrade_python
+    
+    # upgrade_python
     upgrade_existing_packages
-
+    # upgrade_sam_cli
+    
     install_utility_tools
-    upgrade_sam_cli
     install_kubernetes_tools
 
     verify_prerequisites_resources

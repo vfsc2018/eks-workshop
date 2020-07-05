@@ -2,6 +2,8 @@ import * as cdk from '@aws-cdk/core';
 
 import * as dotenv from 'dotenv';
 import * as ec2 from '@aws-cdk/aws-ec2';
+import * as iam from '@aws-cdk/aws-iam';
+import * as eks from '@aws-cdk/aws-eks';
 
 export class EksClusterStack extends cdk.Stack {
   constructor(scope: cdk.Construct, id: string, props?: cdk.StackProps) {
@@ -12,9 +14,35 @@ export class EksClusterStack extends cdk.Stack {
     dotenv.config();
 
     /**
-     * Step 1. use an existing VPC or create a new one for our EKS Cluster
+     * Step 1. Using an existing VPC or create a new one for our EKS Cluster
      */  
     const vpc = getOrCreateVpc(this);
+    
+    
+    /**
+    * Step 2. Creating a new EKS Cluster
+    */  
+    
+    // IAM role for our EC2 worker nodes
+    const clusterAdmin = new iam.Role(this, 'EKS-AdminRole', {
+      assumedBy: new iam.AccountRootPrincipal()
+    });
+
+    var cluster_name = process.env.EKS_CLUSTER_NAME || "EKS-Cluster";
+    // console.log(`cluster_name is ${process.env.EKS_CLUSTER_NAME}`);
+
+    /** Create the Cluster and a default managed NodeGroup of 2 x m5.large */
+    /* const cluster = new eks.Cluster(this, 'cluster-with-no-capacity', { 
+       defaultCapacity: 0 }); */
+    const cluster = new eks.Cluster(this, cluster_name, {
+      clusterName: cluster_name,
+      vpc,
+      defaultCapacity: 1,
+      defaultCapacityInstance: new ec2.InstanceType('t3.medium'),
+      mastersRole: clusterAdmin,
+      outputClusterName: true,
+      version: '1.16',
+    });
     
   }
 }

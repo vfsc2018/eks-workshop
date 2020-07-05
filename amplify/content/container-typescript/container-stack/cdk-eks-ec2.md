@@ -7,7 +7,7 @@ pre= "<b>2.2.2. </b>"
 ### Step 1. Add a EC2 to your EKS stack
 
 * 🎯 Create the new **EKS Cluster** and add **EC2** to the stack.
-    * **1.** Add an **import** statement at the beginning of `cdk-eks/lib/cdk-eks-stack.ts`
+    * **1.** Add an **import** statement at the beginning of `eks-cluster/lib/eks-cluster-stack.ts`
     * **2.** Create an **aws-eks.Cluster** `EKS-Cluster`
         * [x] Cluster Name: `EKS-Cluster`
         * [x] Master Role: `EKS-AdminRole`
@@ -20,7 +20,7 @@ import * as ec2 from '@aws-cdk/aws-ec2';
 import * as iam from '@aws-cdk/aws-iam';
 import * as eks from '@aws-cdk/aws-eks';
 
-export class CdkEksStack extends cdk.Stack {
+export class EksClusterStack extends cdk.Stack {
   constructor(scope: cdk.Construct, id: string, props?: cdk.StackProps) {
     super(scope, id, props);
 
@@ -100,17 +100,17 @@ Save your code, and let's take a quick look at the `cdk diff` before we deploy:
 ```
 npm run build
 
-cdk diff CdkEksStack
+cdk diff EksClusterStack
 ```
 
 
 ## Step 3. Let's deploy
 
 ```
-cdk deploy CdkEksStack
+cdk deploy EksClusterStack
 ```
 
-🎯 Once the CDK is deployed successfully, go to the [CloudFormation](https://ap-southeast-1.console.aws.amazon.com/cloudformation/home?region=ap-southeast-1#/), select the `CdkEksStack` stack and go to the outputs section to copy the value from the field **~~Cluster~~ConfigCommand**; e.g. `EKSEC2ConfigCommand`.
+🎯 Once the CDK is deployed successfully, go to the [CloudFormation](https://ap-southeast-1.console.aws.amazon.com/cloudformation/home?region=ap-southeast-1#/), select the `EksClusterStack` stack and go to the outputs section to copy the value from the field **~~Cluster~~ConfigCommand**; e.g. `EKSEC2ConfigCommand`.
 
 ```bash
 aws eks update-kubeconfig --name EKS-EC2 --region ap-southeast-1 --role-arn arn:aws:iam::XXX

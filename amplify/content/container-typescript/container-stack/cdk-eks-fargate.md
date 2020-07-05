@@ -16,7 +16,7 @@ import * as ec2 from '@aws-cdk/aws-ec2';
 import * as iam from '@aws-cdk/aws-iam';
 import * as eks from '@aws-cdk/aws-eks';
 
-export class CdkEksStack extends cdk.Stack {
+export class EksClusterStack extends cdk.Stack {
   constructor(scope: cdk.Construct, id: string, props?: cdk.StackProps) {
     super(scope, id, props);
 
@@ -70,12 +70,12 @@ Save your code, and let's take a quick look at the `cdk diff` before we deploy:
 ```
 npm run build
 
-cdk diff CdkEksStack
+cdk diff EksClusterStack
 ```
 
 
 ## Step 3. Let's deploy
 
 ```
-cdk deploy CdkEksStack
+cdk deploy EksClusterStack
 ```

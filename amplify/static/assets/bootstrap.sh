@@ -56,10 +56,17 @@ function upgrade_existing_packages() {
 }
 
 function upgrade_python() {
-    _logger "[+] Upgrade Python 3.8"
-    brew install pyenv
-    pyenv -v
-    pyenv install 3.8.3
+    _logger "[+] Upgrade Python 3.7"
+    brew install python3
+    echo 'alias python="python3.7"' >> ~/.bash_profile
+    echo 'alias python3="python3.7"' >> ~/.bash_profile
+    echo 'alias pip="pip3.7"' >> ~/.bash_profile
+    echo 'alias pip3="pip3.7"' >> ~/.bash_profile
+    
+    # _logger "[+] Upgrade Python 3.8"
+    # brew install pyenv
+    # pyenv -v
+    # pyenv install 3.8.3
     # sudo yum install libssl-dev openssl
     # wget https://www.python.org/ftp/python/3.8.3/Python-3.8.3.tgz
     # tar xzvf Python-3.8.3.tgz
@@ -69,11 +76,10 @@ function upgrade_python() {
     # sudo make install
     # cd ..
     # sudo rm -rf Python-3.8.3.tgz Python-3.8.3   
-    
-    echo 'alias python="python3.8"' >> ~/.bash_profile
-    echo 'alias python3="python3.8"' >> ~/.bash_profile
-    echo 'alias pip="pip3.8"' >> ~/.bash_profile
-    echo 'alias pip3="pip3.8"' >> ~/.bash_profile
+    # echo 'alias python="python3.8"' >> ~/.bash_profile
+    # echo 'alias python3="python3.8"' >> ~/.bash_profile
+    # echo 'alias pip="pip3.8"' >> ~/.bash_profile
+    # echo 'alias pip3="pip3.8"' >> ~/.bash_profile
 }
 
 function upgrade_nodejs() {
@@ -177,9 +183,9 @@ function main() {
     
     upgrade_nodejs
     
-    # upgrade_python
+    upgrade_python
     upgrade_existing_packages
-    # upgrade_sam_cli
+    upgrade_sam_cli
     
     install_utility_tools
     install_kubernetes_tools

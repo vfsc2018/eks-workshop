@@ -66,7 +66,7 @@ eksctl completion bash >> ~/.bash_completion
 > Export the Worker Role Name
 
 ```bash
-export EKS_CLUSTER=EKS-EC2
+export EKS_CLUSTER=EKS-Cluster
 
 STACK_NAME=$(eksctl get nodegroup --cluster ${EKS_CLUSTER} -o json | jq -r '.[].StackName')
 ROLE_NAME=$(aws cloudformation describe-stack-resources --stack-name $STACK_NAME | jq -r '.StackResources[] | select(.ResourceType=="AWS::IAM::Role") | .PhysicalResourceId')
@@ -75,7 +75,7 @@ echo "export ROLE_NAME=${ROLE_NAME}" | tee -a ~/.bash_profile
 -->
 
 ```bash
-export CLUSTER_NAME=EKS-EC2
+export CLUSTER_NAME=EKS-Cluster
 # export ROLE_NAME=eks-admin-role
 
 echo "export ROLE_NAME=${CLUSTER_NAME}" | tee -a ~/.bash_profile

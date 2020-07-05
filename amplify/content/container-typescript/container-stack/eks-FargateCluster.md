@@ -1,12 +1,12 @@
 +++
-title = "EKS Fargate"
+title = "EKS FargateCluster"
 weight = 400
 pre= "<b>2.2.4. </b>"
 +++
 
-### Step 1. Add a EKS-Fargate to your stack
+### Step 1. Add a EKS-FargateCluster to your stack
 
-* 🎯 EKS-Fargate ...
+* 🎯 EKS-FargateCluster ...
 
 
 {{<highlight typescript "hl_lines=4-5 20-47">}}
@@ -24,8 +24,8 @@ export class EksClusterStack extends cdk.Stack {
     
     // Step 1. Create a new VPC for our EKS Cluster
     // The default VPC will create a NAT Gateway for each AZs --> Cost
-    const vpc = new ec2.Vpc(this, 'EKS-VPC', {
-      cidr: '10.10.0.0/16',
+    const vpc = new ec2.Vpc(this, 'EKS-FargateCluster-VPC', {
+      cidr: '10.20.0.0/18',
       natGateways: 1
     })
     
@@ -44,7 +44,7 @@ export class EksClusterStack extends cdk.Stack {
     })
 
     const cluster = new eks.FargateCluster(this, "fargate-cluster", {
-      clusterName: "EKS-Fargate",
+      clusterName: "EKS-FargateCluster",
       vpc,
       mastersRole,
       coreDnsComputeType: eks.CoreDnsComputeType.FARGATE,

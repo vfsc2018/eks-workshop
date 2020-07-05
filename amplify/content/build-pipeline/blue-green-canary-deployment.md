@@ -1,7 +1,7 @@
 +++
-title = "Blue/Green Deployments on EKS"
-weight = 30
-pre= "<b>3. </b>"
+title = "Blue/Green Deployments"
+weight = 50
+pre= "<b>5.5. </b>"
 +++
 
 

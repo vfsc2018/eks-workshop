@@ -15,5 +15,5 @@ new CdkEksStack(app, 'CdkEksStack');
 //     }
 // });
 
-// TODO EKS-EC2
-// new CdkEksEC2Stack(app, 'CDK-EKS-EC2-Stack');
+// TODO EKS-Cluster
+// new CdkEksEC2Stack(app, 'CDK-EKS-Cluster-Stack');

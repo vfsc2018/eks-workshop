@@ -1,7 +1,7 @@
 +++
 title = "How to build a Pipeline"
-weight = 50
-pre= "<b>5.5. </b>"
+weight = 60
+pre= "<b>5.6. </b>"
 +++
 
 The best way to automate the creation of CI/CD pipelines is by provisioning them programmatically via Infrastructure as Code. This is specially useful in a Micro-Services environment, where you have a pipeline per Micro-Service, which potentially means dozens of pipelines, if not more. Having an automated way to create these pipelines enables developers to create as many as necessary without building them manually from the console every time.

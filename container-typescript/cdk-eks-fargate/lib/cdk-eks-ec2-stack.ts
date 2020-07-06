@@ -13,12 +13,12 @@ export class CdkEksEC2Stack extends cdk.Stack {
     
     // Step 1. Create a new VPC for our EKS Cluster
     // The default VPC will create a NAT Gateway for each AZs --> Cost
-    const vpc = new ec2.Vpc(this, 'EKS-EC2-VPC', {
+    const vpc = new ec2.Vpc(this, 'EKS-Cluster-VPC', {
       cidr: '10.20.0.0/16',
       natGateways: 1
     })
     
-    // Step 2. EKS-EC2 Cluster
+    // Step 2. EKS-Cluster Cluster
 
     // IAM role for our EC2 worker nodes
     const workerRole = new iam.Role(this, 'EKSWorkerRole', {
@@ -26,7 +26,7 @@ export class CdkEksEC2Stack extends cdk.Stack {
     });
 
     const eksCluster = new eks.Cluster(this, 'Cluster', {
-      clusterName: "EKS-EC2",
+      clusterName: "EKS-Cluster",
       vpc: vpc,
       kubectlEnabled: true,  // We want to be able to manage k8s resources using CDK
       defaultCapacity: 0     // We want to manage capacity ourself

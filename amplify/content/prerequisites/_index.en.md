@@ -19,5 +19,8 @@ pre: "<b>1. </b>"
   * [ ] [Provisioning Cloud9 Workspace using CloudFormation IaC](https://devops.job4u.io/Modern-Apps/VPC-Cloud9-IDE/index.html)
 
 * [x] 1.3. 🎯Configuring **Cloud9** Workspace
+  * [x] [Quick Setup Cloud9](./bootstrap)
+  * [ ] [Install Kubernetes Tools](./bootstrap/k8stools)
+  * [ ] [Verify Prerequisites Resources](./bootstrap/verify-prerequisites)
 
 <!-- {{% children showhidden="false" %}} -->

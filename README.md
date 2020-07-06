@@ -10,9 +10,9 @@ brew install hugo
 2. Git clone
 
 ```
-git clone https://github.com/nnthanh101/modern-apps.git
+git clone https://github.com/nnthanh101/eks-workshop.git
 
-cd modern-apps
+cd eks-workshop
 npm run theme
 ```
 

@@ -55,9 +55,9 @@ npm install -g typescript@latest
 Run git clone on this repository from Cloud9:
 
 ```bash
-git clone https://github.com/nnthanh101/modern-apps.git 
+git clone https://github.com/nnthanh101/eks-workshop.git 
 
-cp modern-apps/container-typescript/eks-blue-green-cicd ~/environment/
+cp eks-workshop/container-typescript/eks-blue-green-cicd ~/environment/
 ```
 
 Once cloned, run the below commands:

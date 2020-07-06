@@ -13,7 +13,7 @@ brew install hugo
 ```
 git clone https://github.com/nnthanh101/aws-cdk.git
 
-cd modern-apps
+cd eks-workshop
 npm run theme
 ```
 

@@ -1,4 +1,4 @@
-/home/ec2-user/environment/modern-apps/container-typescript/cdk-eks
+/home/ec2-user/environment/eks-workshop/container-typescript/cdk-eks
 ├── README.md
 ├── bin
 |  └── cdk-eks.ts

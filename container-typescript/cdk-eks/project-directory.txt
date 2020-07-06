@@ -1,4 +1,4 @@
-modern-apps/container-typescript/cdk-eks
+eks-workshop/container-typescript/cdk-eks
 .
 ├── README.md
 ├── bin

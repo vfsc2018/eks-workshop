@@ -5,15 +5,31 @@ pre= "<b>2.2.1. </b>"
 +++
 
 
-### Step 1. Add a **VPC** to your **EKS** stack: `.env`
+### Step 1. Add a **VPC** to your **EKS** stack:
 
 * 🎯 Define the **VPC** that is used for EKS Cluster.
     * **1.** Add an **import** statement at the beginning of `eks-cluster/lib/eks-cluster-stack.ts`
-    * **2.** Create an **aws-ec2.Vpc** `EKS-VPC` 
-        * [x] VPC Name: `EKS-VPC`
-        * [x] VPC CIDR: `10.10.0.0/16`
-        * [x] Number of NAT Gateway: `1` ~~(Cost Optimization trade-off)~~
+    * **2.** Create an **aws-ec2.Vpc** ~~EKS-VPC~~ 
+        * [x] VPC Name: ~~EKS-VPC~~
+        * [x] VPC CIDR: ~~10.10.0.0/16~~
+        * [x] Number of NAT Gateway: ~~1~~ ~~(Cost Optimization trade-off)~~
+* 🎯  Environment Variables from `.env` file
 
+  ```
+  # ACCOUNT_ID=$(aws sts get-caller-identity --output text --query Account)
+  # AWS_REGION=$(curl -s 169.254.169.254/latest/dynamic/instance-identity/document | jq -r '.region')
+
+  AWS_VPC_NAME="EKS-VPC"
+  AWS_VPC_CIDR="10.10.0.0/18"
+  # AWS_VPC_MAX_AZ=2
+  # AWS_VPC_NAT_GATEWAY=1
+
+  EKS_CLUSTER_NAME="EKS-Cluster"
+  EKS_CLUSTER_ROLE_NAME="EKS-Cluster-Role"
+
+  ECR_REPOSITORY="eks-ecr-repo"
+  CODECOMMIT_REPOSITORY="eks-codecommit-repo"
+  ```
 
 {{<highlight typescript "hl_lines=3-4 12 14-17 22-52">}}
 import * as cdk from '@aws-cdk/core';

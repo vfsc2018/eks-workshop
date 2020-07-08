@@ -54,7 +54,7 @@ export class EksClusterStack extends cdk.Stack {
       defaultCapacity: 1,
       mastersRole: clusterAdmin,
       outputClusterName: true,
-      version: '1.16',
+      version: eks.KubernetesVersion.V1_16,
     });
     
     /** Conditionally create spot instances */

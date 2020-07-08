@@ -41,7 +41,7 @@ export class EksClusterStack extends cdk.Stack {
       defaultCapacityInstance: new ec2.InstanceType('t3.medium'),
       mastersRole: clusterAdmin,
       outputClusterName: true,
-      version: '1.16',
+      version: eks.KubernetesVersion.V1_16,
     });
     
   }

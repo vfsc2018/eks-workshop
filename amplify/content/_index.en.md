@@ -4,7 +4,7 @@ chapter: true
 weight: 1
 ---
 
-# Kubernetes on AWS 🚀
+# Kubernetes on AWS Media-One 🚀
 
 ![Kubernetes using Amazon EKS & AWS CDK](/images/prerequisites/Monoliths-to-Micro-Services-Journey.png?width=50pc)
 
